@@ -14,7 +14,7 @@
   height: 60px;
 }
 
-.TitleForm div > input {
+.TitleForm div > div {
   height: 60px;
   margin-right: 2rem;
 }
@@ -34,7 +34,7 @@
     height: auto;
   }
 
-  .TitleForm div > input {
+  .TitleForm div > div {
     margin-right: 0;
     height: 50px;
     flex: 1;
