@@ -8,10 +8,23 @@
         "extensions": [".js", ".jsx"]
       }
     ],
+    "no-console": 2,
+    "no-return-assign": 0,
+    "padded-blocks": 0,
+    "object-curly-newline": 0,
+    "max-len": ["error", 120],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
     "react/prop-types": 0,
     "no-underscore-dangle": 0,
     "import/imports-first": ["error", "absolute-first"],
-    "import/newline-after-import": "error"
+    "import/newline-after-import": "error",
+    "import/no-unresolved": 0
   },
   "globals": {
     "window": true,
