@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { logo } from '@assets';
-import '@CSS/App.css';
+import { logo } from './assets';
+import './css/App.css';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
