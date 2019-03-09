@@ -13,6 +13,7 @@
   margin: -1px;
   padding-left: 0;
   width: 100%;
+  z-index: 10;
 }
 
 .suggestions li {

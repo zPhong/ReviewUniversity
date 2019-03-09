@@ -2,7 +2,7 @@ import * as React from 'react';
 import AutoCompleteTextInput from './components/AutoCompleteTextInput';
 import { logo } from '../../assets';
 import './css/Home.css';
-import UniversityItem from './components/UniversityItem';
+import UniversityList from './components/UniversityList';
 
 const Title = 'Review trường đại học';
 const Items = [
@@ -12,7 +12,47 @@ const Items = [
     address: 'Thủ Đức, TP Hồ Chí Minh',
     logo:
       'https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg',
-    department: 'IT',
+    department: ['IT', 'Marketing'],
+    reviewCount: '255',
+    vote: { positive: '60 khen', negative: '20 chê' }
+  },
+  {
+    id: '2',
+    name: 'Trường Đại học Công Nghệ Thông Tin',
+    address: 'Thủ Đức, TP Hồ Chí Minh',
+    logo:
+      'https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg',
+    department: ['IT', 'Marketing'],
+    reviewCount: '255',
+    vote: { positive: '60 khen', negative: '20 chê' }
+  },
+  {
+    id: '3',
+    name: 'Trường Đại học Công Nghệ Thông Tin',
+    address: 'Thủ Đức, TP Hồ Chí Minh',
+    logo:
+      'https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg',
+    department: ['IT', 'Marketing'],
+    reviewCount: '255',
+    vote: { positive: '60 khen', negative: '20 chê' }
+  },
+  {
+    id: '4',
+    name: 'Trường Đại học Công Nghệ Thông Tin',
+    address: 'Thủ Đức, TP Hồ Chí Minh',
+    logo:
+      'https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg',
+    department: ['IT', 'Marketing'],
+    reviewCount: '255',
+    vote: { positive: '60 khen', negative: '20 chê' }
+  },
+  {
+    id: '5',
+    name: 'Trường Đại học Công Nghệ Thông Tin',
+    address: 'Thủ Đức, TP Hồ Chí Minh',
+    logo:
+      'https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg',
+    department: ['IT', 'Marketing'],
     reviewCount: '255',
     vote: { positive: '60 khen', negative: '20 chê' }
   }
@@ -241,7 +281,15 @@ const countries = [
   'Zambia',
   'Zimbabwe'
 ];
+
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayCount: 3
+    };
+  }
+
   renderHeader = () => {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-transparent px-0">
@@ -308,13 +356,31 @@ class Home extends React.Component {
     );
   };
 
+  onShowMoreClick = () => {
+    const { displayCount } = this.state;
+    this.setState({ displayCount: displayCount + 2 });
+  };
+
   render() {
+    const { displayCount } = this.state;
     return (
       <div className="Container">
         <div className="px-3 bg-dark pb-1">
           {this.renderHeader()}
           {this.renderTitle()}
-          <UniversityItem {...Items[0]} />
+        </div>
+        <div className="px-3 bg-white pb-1">
+          <UniversityList
+            data={Items.concat(Items)}
+            displayCount={displayCount}
+          />
+          <button
+            type="submit"
+            className="btn btn-success ml-4"
+            onClick={this.onShowMoreClick}
+          >
+            Xem thêm
+          </button>
         </div>
       </div>
     );

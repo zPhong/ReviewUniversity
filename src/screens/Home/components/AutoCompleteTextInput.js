@@ -74,8 +74,8 @@ class Autocomplete extends React.Component {
     const { value } = this.state;
     return (
       <React.Fragment>
-        <div className="w-100 h-100 p-0" style={{ overflow: 'visible' }}>
-          <div className="row" style={{ flex: 1 }}>
+        <div className="h-100" style={{ overflow: 'visible', flex: 1 }}>
+          <div className="row m-0" style={{ flex: 1 }}>
             <span className="glyphicon glyphicon-search" />
             <input
               type="text"
