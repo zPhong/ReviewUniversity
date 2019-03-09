@@ -34,8 +34,7 @@
 @media (max-width: 768px) {
   .UniversityItemContainer {
     width: 100%;
-    min-height: 70vh;
-    max-height: 90vh;
+    height: auto;
     padding: 1rem;
     background-color: azure;
     border-radius: 5px;

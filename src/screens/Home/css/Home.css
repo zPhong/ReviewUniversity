@@ -24,6 +24,9 @@
 }
 
 @media (max-width: 768px) {
+  .Container div button {
+    margin-left: 0px !important;
+  }
   .Title h2 {
     padding: 0;
     text-align: center;
