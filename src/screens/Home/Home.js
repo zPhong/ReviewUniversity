@@ -2,8 +2,21 @@ import * as React from 'react';
 import AutoCompleteTextInput from './components/AutoCompleteTextInput';
 import { logo } from '../../assets';
 import './css/Home.css';
+import UniversityItem from './components/UniversityItem';
 
 const Title = 'Review trường đại học';
+const Items = [
+  {
+    id: '1',
+    name: 'Trường Đại học Công Nghệ Thông Tin',
+    address: 'Thủ Đức, TP Hồ Chí Minh',
+    logo:
+      'https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg',
+    department: 'IT',
+    reviewCount: '255',
+    vote: { positive: '60 khen', negative: '20 chê' }
+  }
+];
 const countries = [
   'Afghanistan',
   'Albania',
@@ -301,6 +314,7 @@ class Home extends React.Component {
         <div className="px-3 bg-dark pb-1">
           {this.renderHeader()}
           {this.renderTitle()}
+          <UniversityItem {...Items[0]} />
         </div>
       </div>
     );

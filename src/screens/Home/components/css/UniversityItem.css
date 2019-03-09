@@ -1,0 +1,30 @@
+.UniversityItemContainer {
+  width: 70vw;
+  height: 140px;
+  margin: 1.5rem;
+  padding: 1rem;
+  background-color: azure;
+  border-radius: 5px;
+}
+
+.logo {
+  height: 100%;
+  width: 15%;
+}
+.content {
+  margin-left: 2rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.content div {
+  margin-left: 0px;
+  width: 25%;
+  justify-content: space-between;
+}
+
+.universityname {
+  font-weight: bold;
+  font-size: 1rem;
+}

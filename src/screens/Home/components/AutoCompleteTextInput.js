@@ -74,19 +74,22 @@ class Autocomplete extends React.Component {
     const { value } = this.state;
     return (
       <React.Fragment>
-        <div className="form-control h-100 p-0" style={{ overflow: 'visible' }}>
-          <input
-            type="text"
-            onBlur={this.onBlur}
-            className="h-100 w-100 border-0 pl-3"
-            placeholder="Tìm theo tên trường đại học / cao đẳng"
-            aria-label="Tìm theo tên trường đại học / cao đẳng"
-            aria-describedby="button-addon2"
-            onChange={onChange}
-            onKeyDown={onKeyDown}
-            value={value}
-          />
-          {this.renderSuggestionList()}
+        <div className="w-100 h-100 p-0" style={{ overflow: 'visible' }}>
+          <div className="row" style={{ flex: 1 }}>
+            <span className="glyphicon glyphicon-search" />
+            <input
+              type="text"
+              onBlur={this.onBlur}
+              className="form-control h-100 border-0"
+              placeholder="Tìm theo tên trường đại học / cao đẳng"
+              aria-label="Tìm theo tên trường đại học / cao đẳng"
+              aria-describedby="button-addon2"
+              onChange={onChange}
+              onKeyDown={onKeyDown}
+              value={value}
+            />
+            {this.renderSuggestionList()}
+          </div>
         </div>
       </React.Fragment>
     );
