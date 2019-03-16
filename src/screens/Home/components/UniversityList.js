@@ -3,7 +3,11 @@ import UniversityItem from './UniversityItem';
 
 const UniversityList = props => {
   const { displayCount, data } = props;
+
+  if (!data) return null;
+
   const end = displayCount >= data.length ? data.length - 1 : displayCount;
+
   return data
     .slice(0, end)
     .map(university => (

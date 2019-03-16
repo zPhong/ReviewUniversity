@@ -3,10 +3,9 @@ import apiUrl from './config';
 class APIModel {
   getUniversities = async () => {
     // eslint-disable-next-line no-undef
-    fetch(`${apiUrl}Universities`)
+    return fetch(`${apiUrl}Universities`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         return data;
       })
       .catch(error => {
