@@ -3,60 +3,9 @@ import AutoCompleteTextInput from './components/AutoCompleteTextInput';
 import { logo } from '../../assets';
 import './css/Home.css';
 import UniversityList from './components/UniversityList';
+import apiModel from '../../api/APIModel';
 
 const Title = 'Review trường đại học';
-const Items = [
-  {
-    id: '1',
-    name: 'Trường Đại học Công Nghệ Thông Tin',
-    address: 'Thủ Đức, TP Hồ Chí Minh',
-    logo:
-      'https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg',
-    department: ['IT', 'Marketing'],
-    reviewCount: '255',
-    vote: { positive: '60 khen', negative: '20 chê' }
-  },
-  {
-    id: '2',
-    name: 'Trường Đại học Công Nghệ Thông Tin',
-    address: 'Thủ Đức, TP Hồ Chí Minh',
-    logo:
-      'https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg',
-    department: ['IT', 'Marketing'],
-    reviewCount: '255',
-    vote: { positive: '60 khen', negative: '20 chê' }
-  },
-  {
-    id: '3',
-    name: 'Trường Đại học Công Nghệ Thông Tin',
-    address: 'Thủ Đức, TP Hồ Chí Minh',
-    logo:
-      'https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg',
-    department: ['IT', 'Marketing'],
-    reviewCount: '255',
-    vote: { positive: '60 khen', negative: '20 chê' }
-  },
-  {
-    id: '4',
-    name: 'Trường Đại học Công Nghệ Thông Tin',
-    address: 'Thủ Đức, TP Hồ Chí Minh',
-    logo:
-      'https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg',
-    department: ['IT', 'Marketing'],
-    reviewCount: '255',
-    vote: { positive: '60 khen', negative: '20 chê' }
-  },
-  {
-    id: '5',
-    name: 'Trường Đại học Công Nghệ Thông Tin',
-    address: 'Thủ Đức, TP Hồ Chí Minh',
-    logo:
-      'https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg',
-    department: ['IT', 'Marketing'],
-    reviewCount: '255',
-    vote: { positive: '60 khen', negative: '20 chê' }
-  }
-];
 const countries = [
   'Afghanistan',
   'Albania',
@@ -286,8 +235,15 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayCount: 3
+      displayCount: 3,
+      data: []
     };
+  }
+
+  async componentWillMount() {
+    const data = await apiModel.getUniversities();
+    console.log(data);
+    this.setState({ data });
   }
 
   renderHeader = () => {
@@ -362,7 +318,7 @@ class Home extends React.Component {
   };
 
   render() {
-    const { displayCount } = this.state;
+    const { displayCount, data } = this.state;
     return (
       <div className="Container">
         <div className="px-3 bg-dark pb-1">
@@ -370,10 +326,7 @@ class Home extends React.Component {
           {this.renderTitle()}
         </div>
         <div className="px-3 bg-white pb-1">
-          <UniversityList
-            data={Items.concat(Items)}
-            displayCount={displayCount}
-          />
+          <UniversityList data={data} displayCount={displayCount} />
           <button
             type="submit"
             className="btn btn-success ml-4"

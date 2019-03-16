@@ -5,11 +5,12 @@ function UniversityItem(props) {
   const {
     id,
     name,
-    address,
+    location,
     logo,
     department,
     reviewCount,
-    vote: { positive, negative }
+    positive,
+    negative
   } = props;
   return (
     <div className="row UniversityItemContainer">
@@ -18,8 +19,10 @@ function UniversityItem(props) {
         <a className="universityName text-monospace" href={`/:${id}`}>
           {name}
         </a>
-        <p className="m-0">{address}</p>
-        <p className="m-0">{department.toString().replace(',', ', ')}</p>
+        <p className="m-0">{location}</p>
+        <p className="m-0">
+          {department && department.toString().replace(',', ', ')}
+        </p>
 
         <div className="row">
           <a href={`/:${id}`} className="text-success text-monospace">
