@@ -1,0 +1,49 @@
+.container {
+    border: 1px solid black;
+}
+
+p {
+    margin: 0;
+}
+
+.review-identification {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.review-creation-time {
+    margin-top: 0.5rem;
+    margin-left: auto;
+    font-weight: 500;
+}
+
+.review-type {
+    color: green;
+    font-weight: 500;
+}
+
+.type-blame {
+    color: red;
+}
+
+.review-content {
+    border: 1px solid black;
+}
+
+.reply-button {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    min-width: 70px;
+    font-weight: 500;
+    outline: 0 !important;
+}
+
+.show-reply-button {
+    background-color: transparent;
+    border-width: 0;
+    color: blue;
+    outline: 0 !important;
+    cursor: pointer;
+}

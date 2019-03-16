@@ -1,0 +1,25 @@
+.reply-container {
+    border: 1px solid black;
+    margin-left: 2rem !important;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+p {
+    margin: 0;
+}
+
+.reply-identification {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.reply-creation-time {
+    margin-top: 0.5rem;
+    margin-left: auto;
+    font-weight: 500;
+}
+
+.reply-content {
+    //border: 1px solid black;
+}
