@@ -3,6 +3,7 @@ import AutoCompleteTextInput from './components/AutoCompleteTextInput';
 import { logo } from '../../assets';
 import './css/Home.css';
 import UniversityList from './components/UniversityList';
+import apiModel from '../../api/APIModel';
 
 const Title = 'Review trường đại học';
 const Items = [
@@ -288,6 +289,7 @@ class Home extends React.Component {
     this.state = {
       displayCount: 3
     };
+    this.universities = apiModel.getUniversities();
   }
 
   renderHeader = () => {
