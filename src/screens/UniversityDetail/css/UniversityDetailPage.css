@@ -1,0 +1,91 @@
+.university-information {
+    display: flex;
+}
+
+.my-logo {
+    display: block;
+    max-width: 170px;
+    max-height: 170px;
+}
+
+.university-information-details {
+    display: block;
+    width: 100%;
+}
+
+.university-information-details-name {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.university-information-details-departments {
+    font-size: 1.25rem;
+    color: #A9A9A9;
+}
+
+.university-information-details-location {
+    font-size: 1.25rem;
+    color: #A9A9A9;
+}
+
+.university-information-details-praise-and-blame {
+
+}
+
+.university-information-details-praise {
+    text-decoration: underline;
+}
+
+.university-information-details-blame {
+    margin-left: 1rem;
+    text-decoration: underline;
+}
+
+.university-information-details-button-review {
+    background-color: #F5F5F5;
+    margin-top: 1.5rem;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    min-width: 8rem;
+    max-width: 8rem;
+    max-height: 2rem;
+}
+
+.line{
+    width: 100%;
+    border-bottom: 3px solid black;
+    position: absolute;
+}
+
+.review-number {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+
+
+
+
+/* ===========================================================================
+/*                              RESPONSIVE
+/* ===========================================================================
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .university-information-details-button-review {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
