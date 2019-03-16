@@ -6,7 +6,7 @@ const UniversityList = props => {
 
   if (!data) return null;
 
-  const end = displayCount >= data.length ? data.length - 1 : displayCount;
+  const end = displayCount >= data.length ? data.length : displayCount;
 
   return data
     .slice(0, end)
