@@ -28,30 +28,22 @@ class UniversityDetailPage extends React.Component {
 
   render() {
     const {
-      data: { name, location, reviews }
+      data: { name, location, reviews, logo, numberOfReviews }
     } = this.state;
-    const titlePage = 'University Information of Technology'; // this.props.titlePage;
-    const javLink =
-      'http://tuoitre.uit.edu.vn/wp-content/uploads/2015/07/logo-uit.png';
 
     const universityInformation = {
-      name,
       departments: ['IT', 'Sex'],
-      location,
       praiseNumber: 120,
-      blameNumber: 56,
-      reviewNumber: 203
+      blameNumber: 56
     };
 
     return (
       <div className="container-fluid">
-        <h1>{titlePage}</h1>
+        <h1>{name}</h1>
         <div className="university-information">
-          <img src={javLink} className="rounded d-block my-logo" alt="logo" />
+          <img src={logo} className="rounded d-block my-logo" alt="logo" />
           <div className="university-information-details pl-3">
-            <p className="university-information-details-name m-0">
-              {universityInformation.name}
-            </p>
+            <p className="university-information-details-name m-0">{name}</p>
             <div className="row m-0">
               <div className="d-block col-lg-4 col-md-8 p-0">
                 <p className="university-information-details-departments m-0">
@@ -60,7 +52,7 @@ class UniversityDetailPage extends React.Component {
                     .replace(',', ', ')}
                 </p>
                 <p className="university-information-details-location m-0">
-                  {universityInformation.location}
+                  {location}
                 </p>
                 <div className="university-information-details-praise-and-blame">
                   <a
@@ -90,11 +82,7 @@ class UniversityDetailPage extends React.Component {
         </div>
         <div className="line" />
         <div className="review-number">
-          {universityInformation.reviewNumber > 1 ? (
-            <p>{universityInformation.reviewNumber} reviews</p>
-          ) : (
-            <p>{universityInformation.reviewNumber} review</p>
-          )}
+          <p>{`review${numberOfReviews > 1 ? 's' : ''} ${numberOfReviews}`}</p>
         </div>
         {reviews && reviews.map(review => <ReviewComponent review={review} />)}
         {/* <ReplyComponent reply={reviews.replies[0]} /> */}
