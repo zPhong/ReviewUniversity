@@ -61,10 +61,10 @@ class UniversityDetailPage extends React.Component {
                 <p className="university-information-details-location m-0">{location}</p>
                 <div className="university-information-details-praise-and-blame">
                   <a href="./" className="university-information-details-praise text-success">
-                    {universityInformation.praiseNumber} praise
+                    {universityInformation.praiseNumber} khen
                   </a>
                   <a href="./" className="university-information-details-blame text-danger">
-                    {universityInformation.blameNumber} blame
+                    {universityInformation.blameNumber} chê
                   </a>
                 </div>
               </div>
