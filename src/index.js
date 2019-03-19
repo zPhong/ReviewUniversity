@@ -9,14 +9,15 @@ import {
   Switch,
 } from 'react-router-dom';
 import Home from './screens/Home/Home'
-import UniversityDetailPage from './screens/UniversityDetail/js/UniversityDetailPage'
+import UniversityDetailPage from './screens/UniversityDetail/UniversityDetailPage'
 import Notfound from './screens/notfound'
+import AddMoreUniversity from "./screens/AddMoreUniversity/AddMoreUniversity";
 
 
 const routing = (
   <Router>
     <div>
-      <ul>
+      <ul className="row">
         <li>
           {/*
             within exact property the router will render only the URL is visited
@@ -25,9 +26,14 @@ const routing = (
             Home
           </NavLink>
         </li>
-        <li>
+        <li className="ml-5">
           <NavLink activeClassName="active" to="/university">
             UniversityDetailPage
+          </NavLink>
+        </li>
+        <li className="ml-5">
+          <NavLink activeClassName="active" to="/addmore">
+            Add More University
           </NavLink>
         </li>
       </ul>
@@ -41,6 +47,7 @@ const routing = (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/university" component={UniversityDetailPage} />
+        <Route path="/addmore" component={AddMoreUniversity} />
         <Route component={Notfound} />
       </Switch>
     </div>

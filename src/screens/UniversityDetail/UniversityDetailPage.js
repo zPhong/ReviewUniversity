@@ -1,8 +1,8 @@
 import * as React from 'react';
-import '../css/UniversityDetailPage.css';
-import ReviewComponent from '../components/js/ReviewComponent';
-import ReplyComponent from '../components/js/ReplyComponent';
-import appModel from '../../../api/APIModel';
+import './css/UniversityDetailPage.css';
+import ReviewComponent from './components/ReviewComponent';
+import ReplyComponent from './components/ReplyComponent';
+import appModel from '../../api/APIModel';
 
 class UniversityDetailPage extends React.Component {
   constructor(props) {
