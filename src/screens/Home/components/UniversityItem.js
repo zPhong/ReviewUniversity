@@ -8,7 +8,7 @@ function UniversityItem(props) {
     location,
     logo,
     department,
-    reviewCount,
+    numberOfReviews,
     positive,
     negative
   } = props;
@@ -37,7 +37,7 @@ function UniversityItem(props) {
           </a>
         </div>
         <a className="ml-auto" href={`/:${id}`}>
-          <p className="m-0 ml-auto text-monospace">{`Review ${reviewCount}`}</p>
+          <p className="m-0 ml-auto text-monospace">{`Review ${numberOfReviews}`}</p>
         </a>
       </div>
     </div>

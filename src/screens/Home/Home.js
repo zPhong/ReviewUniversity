@@ -242,7 +242,6 @@ class Home extends React.Component {
 
   async componentWillMount() {
     const data = await apiModel.getUniversities();
-    console.log(data);
     this.setState({ data });
   }
 
