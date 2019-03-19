@@ -1,110 +1,112 @@
 import * as React from 'react';
 import './css/ReviewComponent.css';
 import ReplyComponent from './ReplyComponent';
+import APIModel from '../../../api/APIModel';
+import PostDialog from './Dialog/PostDialog';
 
 class ReviewComponent extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
+      show: false,
       displayReplies: false,
-    }
+      replies: []
+    };
   }
 
+  onClose = () => {
+    this.setState({ show: false });
+  };
+
+  onShow = () => {
+    this.setState({ show: true });
+  };
+
+  loadReply = async () => {
+    const {
+      review: { id }
+    } = this.props;
+    const data = await APIModel.getReply(id);
+    this.setState({ replies: data.replies });
+  };
+
   onClickViewReplies = () => {
-    this.setState({displayReplies: !this.state.displayReplies});
+    const { displayReplies } = this.state;
+    this.setState({ displayReplies: !displayReplies });
+    this.loadReply();
   };
 
-  formatType = (type) => {
-    if (type === 'khen') type = 'Khen';
-    else if (type === 'che') type = 'Chê';
-    else type = '';
-    return type;
+  formatType = type => {
+    if (type === 'khen') return 'Khen';
+    if (type === 'che') return 'Chê';
+    return '';
   };
 
-  renderReplies = (replies) => {
-    if ( this.state.displayReplies )
-    {
-      return (replies.map(reply => <ReplyComponent reply={reply} />));
+  renderReplies = replies => {
+    const { displayReplies } = this.state;
+    if (displayReplies) {
+      return replies.map(reply => <ReplyComponent reply={reply} />);
     }
+    return null;
   };
 
-  capitalizeFirstLetter = (string) =>
-  {
+  capitalizeFirstLetter = string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
   render() {
     const {
-      review: { type, role, context, numberOfReplies}
+      review: { id, type, role, context, numberOfReplies }
     } = this.props;
 
-    const replies = [
-      {
-      "id": "1",
-      "role": "kien ngu hoc",
-      "type": "khen",
-      "context": "string",
-      "reviewId": "string"
-      },
-      {
-        "id": "2",
-        "role": "phong map",
-        "type": "string",
-        "context": "string",
-        "reviewId": "string"
-      },
-      {
-        "id": "3",
-        "role": "string",
-        "type": "string",
-        "context": "string",
-        "reviewId": "string"
-      },
-      {
-        "id": "4",
-        "role": "string",
-        "type": "string",
-        "context": "string",
-        "reviewId": "string"
-      },
-      {
-        "id": "5",
-        "role": "string",
-        "type": "string",
-        "context": "string",
-        "reviewId": "string"
-      },
-    ];
+    const { displayReplies, replies, show } = this.state;
 
     return (
-
       <div className="review-container">
         <div className="row m-0">
-          <p className="review-identification">{this.capitalizeFirstLetter(role) || ''}</p>
-          <p className="review-creation-time"></p>
+          <p className="review-identification">
+            {this.capitalizeFirstLetter(role) || ''}
+          </p>
+          <p className="review-creation-time" />
         </div>
-        <p className={type === 'khen' ? 'review-type' : 'review-type type-blame'}>
-          { this.formatType(type) }
+        <p
+          className={type === 'khen' ? 'review-type' : 'review-type type-blame'}
+        >
+          {this.formatType(type)}
         </p>
         <div className="review-content p-2">{context || ''}</div>
         <div className="row p-0 m-0 mt-2 mb-1">
-          <button type="button" className="reply-button btn-info">
+          <button
+            type="button"
+            className="reply-button btn-info"
+            onClick={this.onShow}
+          >
             Reply
           </button>
           <button
             type="button"
             className="show-reply-button"
-            onClick={this.onClickViewReplies}>
+            onClick={this.onClickViewReplies}
+          >
             <u>
-            {numberOfReplies > 1
-              ? `(${numberOfReplies} replies)`
-              : `(${numberOfReplies} reply)`}
-          </u>
+              {numberOfReplies > 1
+                ? `(${numberOfReplies} replies)`
+                : `(${numberOfReplies} reply)`}
+            </u>
           </button>
         </div>
-        <div className={this.state.displayReplies ? "row m-0 d-block reply-block show-replies" : "row m-0 d-block reply-block"}>
-          { this.renderReplies(replies)}
+        <div
+          className={
+            displayReplies
+              ? 'row m-0 d-block reply-block show-replies'
+              : 'row m-0 d-block reply-block'
+          }
+        >
+          {this.renderReplies(replies)}
         </div>
+        {show && (
+          <PostDialog reviewId={id} onClose={this.onClose} dialogType="Reply" />
+        )}
       </div>
     );
   }

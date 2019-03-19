@@ -12,9 +12,16 @@ const Roles = {
 };
 
 const Types = {
-  like: 'Khen',
-  dislike: 'Chê',
-  others: 'Góp ý'
+  Reivew: {
+    like: 'Khen',
+    dislike: 'Chê',
+    others: 'Góp ý'
+  },
+  Reply: {
+    like: 'Tán thành',
+    dislike: 'Phản bác',
+    others: 'Trung lập'
+  }
 };
 
 const dialogDisplayType = {
@@ -36,19 +43,23 @@ class ReviewPostDialog extends React.Component {
 
   onSubmit = async () => {
     const { role, type, content } = this.state;
-    const { universityId } = this.props;
+    const { universityId, reviewId, dialogType } = this.props;
+
+    const id = dialogType === 'Review' ? { universityId } : { reviewId };
 
     const data = {
+      ...id,
       role,
       type,
-      context: content,
-      universityId
+      context: content
     };
 
-    await APIModel.postReview(data);
+    if (dialogType === 'Review') await APIModel.postReview(data);
+    else await APIModel.postReply(data);
   };
 
   renderContent = () => {
+    const { dialogType } = this.props;
     const { role, type } = this.state;
     return (
       <form>
@@ -65,7 +76,7 @@ class ReviewPostDialog extends React.Component {
               <p> {role || 'Vai trò của bạn'}</p>
               {Object.keys(Roles).map(key => (
                 <option className="dropdown-item" value={key}>
-                  {Roles[key]}
+                  {Roles[dialogType][key]}
                 </option>
               ))}
             </select>
@@ -84,7 +95,7 @@ class ReviewPostDialog extends React.Component {
               <p> {role || 'Đánh giá của bạn'}</p>
               {Object.keys(Types).map(key => (
                 <option className="dropdown-item" value={key}>
-                  {Types[key]}
+                  {Types[dialogType][key]}
                 </option>
               ))}
             </select>
