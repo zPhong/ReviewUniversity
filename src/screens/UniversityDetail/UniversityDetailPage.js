@@ -36,14 +36,14 @@ class UniversityDetailPage extends React.Component {
 
   render() {
     const {
-      data: { id, name, location, reviews, logo, numberOfReviews },
+      data: { id, name, location, reviews = [], logo, numberOfReviews },
       show
     } = this.state;
 
     const universityInformation = {
       departments: ['IT', 'Sex'],
-      praiseNumber: 120,
-      blameNumber: 56
+      praiseNumber: reviews.filter((review) => review.type === 'like').length || 0,
+      blameNumber: reviews.filter((review) => review.type === 'dislike').length || 0
     };
 
     return (
@@ -56,24 +56,14 @@ class UniversityDetailPage extends React.Component {
             <div className="row m-0">
               <div className="d-block col-lg-4 col-md-8 p-0">
                 <p className="university-information-details-departments m-0">
-                  {universityInformation.departments
-                    .toString()
-                    .replace(',', ', ')}
+                  {universityInformation.departments.toString().replace(',', ', ')}
                 </p>
-                <p className="university-information-details-location m-0">
-                  {location}
-                </p>
+                <p className="university-information-details-location m-0">{location}</p>
                 <div className="university-information-details-praise-and-blame">
-                  <a
-                    href="./"
-                    className="university-information-details-praise text-success"
-                  >
+                  <a href="./" className="university-information-details-praise text-success">
                     {universityInformation.praiseNumber} praise
                   </a>
-                  <a
-                    href="./"
-                    className="university-information-details-blame text-danger"
-                  >
+                  <a href="./" className="university-information-details-blame text-danger">
                     {universityInformation.blameNumber} blame
                   </a>
                 </div>
@@ -96,15 +86,8 @@ class UniversityDetailPage extends React.Component {
         <div className="review-number">
           <p>{`review${numberOfReviews > 1 ? 's' : ''} ${numberOfReviews}`}</p>
         </div>
-        {reviews &&
-          reviews.reverse().map(review => <ReviewComponent review={review} />)}
-        {show && (
-          <PostDialog
-            universityId={id}
-            onClose={this.onClose}
-            dialogType="Review"
-          />
-        )}
+        {reviews && reviews.reverse().map((review) => <ReviewComponent review={review} />)}
+        {show && <PostDialog universityId={id} onClose={this.onClose} dialogType="Review" />}
       </div>
     );
   }
