@@ -66,6 +66,7 @@ const routing = (
         <Route exact path="/" component={Home} />
         <Route path="/:id" component={UniversityDetailPage} />
         <Route path="/addmore" component={AddMoreUniversity} />
+        <Route path="/:id" component={UniversityDetailPage}/>
         <Route component={Notfound} />
       </Switch>
     </div>
