@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../css/ReplyComponent.css'
+import './css/ReplyComponent.css'
 
 class ReplyComponent extends React.Component {
   capitalizeFirstLetter = (string) =>

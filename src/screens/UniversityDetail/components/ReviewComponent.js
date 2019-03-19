@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../css/ReviewComponent.css';
+import './css/ReviewComponent.css';
 import ReplyComponent from './ReplyComponent';
 
 class ReviewComponent extends React.Component {
