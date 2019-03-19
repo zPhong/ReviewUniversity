@@ -30,6 +30,24 @@ class APIModel {
         alert(JSON.stringify(responseData));
       });
   };
+
+  postUniversity = async universityData => {
+    // eslint-disable-next-line no-undef
+    return fetch(`${apiUrl}Universities`, {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(universityData)
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(responseData => {
+        alert(JSON.stringify(responseData));
+      });
+  };
 }
 
 const apiModel = new APIModel();
