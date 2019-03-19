@@ -5,7 +5,7 @@
     padding-right: 15px;
     background: #ffffff;
     margin-top: 1rem;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.5rem;
     border-radius: 4px;
 }
 
@@ -32,4 +32,18 @@ p {
     background: #FCFCFC;
     margin-bottom: 0.5rem;
     border-radius: 3px;
+}
+
+.reply-type {
+    color: green;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.type-blame {
+    color: red;
+}
+
+.type-other {
+    color: #282c34;
 }

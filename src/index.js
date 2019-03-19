@@ -18,27 +18,6 @@ import AddMoreUniversity from "./screens/AddMoreUniversity/AddMoreUniversity";
 const routing = (
   <Router>
     <div>
-      <ul className="row">
-        <li>
-          {/*
-            within exact property the router will render only the URL is visited
-          */}
-          <NavLink exact activeClassName="active" to="/">
-            Home
-          </NavLink>
-        </li>
-        <li className="ml-5">
-          <NavLink activeClassName="active" to="/university">
-            UniversityDetailPage
-          </NavLink>
-        </li>
-        <li className="ml-5">
-          <NavLink activeClassName="active" to="/addmore">
-            Add More University
-          </NavLink>
-        </li>
-      </ul>
-      <hr />
       {/*
       The Switch component will work much in the same way as the Router component
       The added functionality of Switch is that it will only render the first matched <Route/> child
@@ -47,8 +26,9 @@ const routing = (
       */}
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/university" component={UniversityDetailPage} />
+        {/*<Route path="/university" component={UniversityDetailPage} />*/}
         <Route path="/addmore" component={AddMoreUniversity} />
+        <Route path="/:id" component={UniversityDetailPage}/>
         <Route component={Notfound} />
       </Switch>
     </div>

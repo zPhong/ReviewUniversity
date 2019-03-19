@@ -54,6 +54,7 @@ class AddMoreUniversity extends React.Component{
   };
 
   render() {
+    const {name, location, department, logoUrl} = this.state;
     return (
       <form className="container" id="form">
         <div className="justify-content-center d-flex mb-4">
@@ -63,7 +64,7 @@ class AddMoreUniversity extends React.Component{
           <label className="col-md-2 m-0 align-self-center" htmlFor="universityName">University Name:</label>
           <input type="text" className="col-md-10 form-control remove-blue-border" id="universityName" name="universityName"
                  placeholder="Trường Đại Học Công Nghệ Thông Tin"
-                 value={this.state.name}
+                 value={name}
                  onChange={event  => this.handleChangeName(event)}/>
         </div>
 
@@ -71,7 +72,7 @@ class AddMoreUniversity extends React.Component{
           <label className="col-md-2 m-0 align-self-center" htmlFor="universityLocation">Location:</label>
           <input type="text" className="col-md-10 form-control" id="universityLocation" name="universityLocation"
                  placeholder="Khu Phố 6, Phường Linh Trung, Thủ Đức, Hồ Chí Minh"
-                 value={this.state.location}
+                 value={location}
                  onChange={event  => this.handleChangeName(event)}/>
         </div>
 
@@ -79,7 +80,7 @@ class AddMoreUniversity extends React.Component{
           <label className="col-md-2 m-0 align-self-center" htmlFor="universityDepartment">Department:</label>
           <input type="text" className="col-md-10 form-control" id="universityDepartment" name="universityDepartment"
                  placeholder="Sex, Buscu, Anal, Squirt"
-                 value={this.state.department}
+                 value={department}
                  onChange={event  => this.handleChangeName(event)}/>
         </div>
 
@@ -87,7 +88,7 @@ class AddMoreUniversity extends React.Component{
           <label className="col-md-2 m-0 align-self-center" htmlFor="universityLogoURL">Logo URL:</label>
           <input type="text" className="col-md-10 form-control" id="universityLogoURL" name="universityLogoURL"
                  placeholder="https://www.pornhub.com/"
-                 value={this.state.logoUrl}
+                 value={logoUrl}
                  onChange={event  => this.handleChangeName(event)}/>
         </div>
 
