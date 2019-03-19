@@ -1,6 +1,5 @@
 import * as React from 'react';
 import AutoCompleteTextInput from './components/AutoCompleteTextInput';
-import { logo } from '../../assets';
 import './css/Home.css';
 import UniversityList from './components/UniversityList';
 import apiModel from '../../api/APIModel';
@@ -245,48 +244,6 @@ class Home extends React.Component {
     this.setState({ data });
   }
 
-  renderHeader = () => {
-    return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-transparent px-0">
-        <a className="navbar-brand" href="#">
-          <img src={logo} className="rounded mx-auto d-block Logo" alt="logo" />
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav ml-auto">
-            <a className="nav-item nav-link active" href="#">
-              Home <span className="sr-only">(current)</span>
-            </a>
-            <a className="nav-item nav-link" href="#">
-              Features
-            </a>
-            <a className="nav-item nav-link" href="#">
-              Pricing
-            </a>
-            <a
-              className="nav-item nav-link disabled"
-              href="#"
-              tabIndex="-1"
-              aria-disabled="true"
-            >
-              Disabled
-            </a>
-          </div>
-        </div>
-      </nav>
-    );
-  };
-
   renderTitle = () => {
     return (
       <div className="Title">
@@ -320,10 +277,7 @@ class Home extends React.Component {
     const { displayCount, data } = this.state;
     return (
       <div className="Container">
-        <div className="px-3 bg-dark pb-1">
-          {this.renderHeader()}
-          {this.renderTitle()}
-        </div>
+        <div className="px-3 bg-dark pb-1">{this.renderTitle()}</div>
         <div className="px-3 bg-white pb-1">
           <UniversityList data={data} displayCount={displayCount} />
           <button
