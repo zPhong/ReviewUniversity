@@ -1,5 +1,9 @@
-.container {
-    border: 1px solid black;
+.review-container {
+    border: 1px solid #4b4b4b;
+    background: #FCFCFC;
+    margin: 1rem 3rem 1rem;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
 }
 
 p {
@@ -9,6 +13,7 @@ p {
 .review-identification {
     font-size: 1.5rem;
     font-weight: 500;
+    color: #8c8c8c;
 }
 
 .review-creation-time {
@@ -20,6 +25,8 @@ p {
 .review-type {
     color: green;
     font-weight: 500;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
 }
 
 .type-blame {
@@ -27,17 +34,20 @@ p {
 }
 
 .review-content {
-    border: 1px solid black;
+    border: 1px solid #979797;
+    background: #ffffff;
+    border-radius: 3px;
 }
 
 .reply-button {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     border-radius: 5px;
-    border: 1px solid black;
-    min-width: 70px;
+    border: 0 solid black;
+    min-width: 80px;
     font-weight: 500;
     outline: 0 !important;
+    min-height: 35px;
 }
 
 .show-reply-button {
@@ -46,4 +56,14 @@ p {
     color: blue;
     outline: 0 !important;
     cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.reply-block {
+    overflow-y: scroll;
+    max-height: 500px;
+}
+
+.show-replies {
+    border-top: 1px dashed #4b4b4b;
 }
