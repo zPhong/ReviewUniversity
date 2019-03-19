@@ -2,6 +2,8 @@ import * as React from 'react';
 import AutoCompleteTextInput from './components/AutoCompleteTextInput';
 import { logo } from '../../assets';
 import './css/Home.css';
+import UniversityList from './components/UniversityList';
+import apiModel from '../../api/APIModel';
 
 const Title = 'Review trường đại học';
 const countries = [
@@ -228,7 +230,21 @@ const countries = [
   'Zambia',
   'Zimbabwe'
 ];
+
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayCount: 3,
+      data: []
+    };
+  }
+
+  async componentWillMount() {
+    const data = await apiModel.getUniversities();
+    this.setState({ data });
+  }
+
   renderHeader = () => {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-transparent px-0">
@@ -295,12 +311,28 @@ class Home extends React.Component {
     );
   };
 
+  onShowMoreClick = () => {
+    const { displayCount } = this.state;
+    this.setState({ displayCount: displayCount + 2 });
+  };
+
   render() {
+    const { displayCount, data } = this.state;
     return (
       <div className="Container">
         <div className="px-3 bg-dark pb-1">
           {this.renderHeader()}
           {this.renderTitle()}
+        </div>
+        <div className="px-3 bg-white pb-1">
+          <UniversityList data={data} displayCount={displayCount} />
+          <button
+            type="submit"
+            className="btn btn-success ml-4"
+            onClick={this.onShowMoreClick}
+          >
+            Xem thêm
+          </button>
         </div>
       </div>
     );
