@@ -1,9 +1,9 @@
 import * as React from 'react';
-import './css/ReplyComponent.css'
+import moment from 'moment';
+import './css/ReplyComponent.css';
 
 class ReplyComponent extends React.Component {
-  capitalizeFirstLetter = (string) =>
-  {
+  capitalizeFirstLetter = string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
@@ -14,26 +14,37 @@ class ReplyComponent extends React.Component {
     return '';
   };
 
+  formatDate = milisec => {
+    return moment(milisec).format('hh:mm:ss A, DD/MM/YYYY');
+  };
+
   render() {
     const {
-      reply: { id, role, type, context },
+      reply: { role, type, context, createAt }
     } = this.props;
 
     return (
       <div className="reply-container">
         <div className="row m-0">
-          <p className="reply-identification">{this.capitalizeFirstLetter(role)}</p>
-          <p className="reply-creation-time">{'02/03/2019'}</p>
+          <p className="reply-identification">
+            {this.capitalizeFirstLetter(role)}
+          </p>
+          <p className="reply-creation-time">{this.formatDate(createAt)}</p>
         </div>
 
-        <p className={type === 'like' ? 'reply-type' :
-          type === 'dislike' ? 'reply-type type-blame' : 'reply-type type-other'}>
+        <p
+          className={
+            type === 'like'
+              ? 'reply-type'
+              : type === 'dislike'
+              ? 'reply-type type-blame'
+              : 'reply-type type-other'
+          }
+        >
           {this.formatType(type)}
         </p>
 
-        <div className="reply-content p-2">
-          {context}
-        </div>
+        <div className="reply-content p-2">{context}</div>
       </div>
     );
   }

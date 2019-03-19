@@ -1,4 +1,5 @@
 import * as React from 'react';
+import moment from 'moment';
 import './css/ReviewComponent.css';
 import ReplyComponent from './ReplyComponent';
 import APIModel from '../../../api/APIModel';
@@ -43,6 +44,10 @@ class ReviewComponent extends React.Component {
     return '';
   };
 
+  formatDate = milisec => {
+    return moment(milisec).format('hh:mm:ss A, DD/MM/YYYY');
+  };
+
   renderReplies = replies => {
     const { displayReplies } = this.state;
     if (displayReplies) {
@@ -57,7 +62,7 @@ class ReviewComponent extends React.Component {
 
   render() {
     const {
-      review: { id, type, role, context, numberOfReplies }
+      review: { id, type, role, context, numberOfReplies, createAt }
     } = this.props;
 
     const { displayReplies, replies, show } = this.state;
@@ -68,10 +73,17 @@ class ReviewComponent extends React.Component {
           <p className="review-identification">
             {this.capitalizeFirstLetter(role) || ''}
           </p>
-          <p className="review-creation-time" />
+          <p className="review-creation-time">{this.formatDate(createAt)}</p>
         </div>
-        <p className={type === 'like' ? 'review-type' :
-            type === 'dislike' ? 'review-type type-blame' : 'review-type type-other'}>
+        <p
+          className={
+            type === 'like'
+              ? 'review-type'
+              : type === 'dislike'
+              ? 'review-type type-blame'
+              : 'review-type type-other'
+          }
+        >
           {this.formatType(type)}
         </p>
         <div className="review-content p-2">{context || ''}</div>
