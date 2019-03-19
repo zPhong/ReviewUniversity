@@ -1,13 +1,14 @@
 import * as React from 'react';
-import '../css/UniversityDetailPage.css';
-import ReviewComponent from '../components/js/ReviewComponent';
-import ReplyComponent from '../components/js/ReplyComponent';
-import appModel from '../../../api/APIModel';
+import './css/UniversityDetailPage.css';
+import ReviewComponent from './components/ReviewComponent';
+import appModel from '../../api/APIModel';
+import PostDialog from './components/Dialog/PostDialog';
 
 class UniversityDetailPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      show: false,
       data: [
         {
           name: '',
@@ -20,15 +21,23 @@ class UniversityDetailPage extends React.Component {
 
   async componentDidMount() {
     const data = await appModel.getUniversities('5c7e9dfaf4014336e0a0798b');
-    console.log(data);
     this.setState({ data });
   }
+
+  onClose = () => {
+    this.setState({ show: false });
+  };
+
+  onShow = () => {
+    this.setState({ show: true });
+  };
 
   renderDepartment = () => {};
 
   render() {
     const {
-      data: { name, location, reviews, logo, numberOfReviews }
+      data: { id, name, location, reviews, logo, numberOfReviews },
+      show
     } = this.state;
 
     const universityInformation = {
@@ -71,8 +80,11 @@ class UniversityDetailPage extends React.Component {
               </div>
               <div className="col-lg-8 col-md-4 p-0">
                 <button
+                  data-toggle="modal"
+                  data-target="ReviewPostDialog"
                   type="button"
                   className="university-information-details-button-review"
+                  onClick={this.onShow}
                 >
                   Review
                 </button>
@@ -84,8 +96,15 @@ class UniversityDetailPage extends React.Component {
         <div className="review-number">
           <p>{`review${numberOfReviews > 1 ? 's' : ''} ${numberOfReviews}`}</p>
         </div>
-        {reviews && reviews.map(review => <ReviewComponent review={review} />)}
-        {/* <ReplyComponent reply={reviews.replies[0]} /> */}
+        {reviews &&
+          reviews.reverse().map(review => <ReviewComponent review={review} />)}
+        {show && (
+          <PostDialog
+            universityId={id}
+            onClose={this.onClose}
+            dialogType="Review"
+          />
+        )}
       </div>
     );
   }

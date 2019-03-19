@@ -12,6 +12,24 @@ class APIModel {
         console.log('error', error);
       });
   };
+
+  postReview = async reviewData => {
+    // eslint-disable-next-line no-undef
+    return fetch(`${apiUrl}Reviews`, {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reviewData)
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(responseData => {
+        alert(JSON.stringify(responseData));
+      });
+  };
 }
 
 const apiModel = new APIModel();

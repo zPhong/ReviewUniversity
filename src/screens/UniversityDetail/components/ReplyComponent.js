@@ -1,15 +1,14 @@
 import * as React from 'react';
-import '../css/ReplyComponent.css'
+import './css/ReplyComponent.css';
 
 class ReplyComponent extends React.Component {
-  fuckingPhong = () => {
-  };
+  fuckingPhong = () => {};
 
   render() {
     const {
       reply: { identification },
       reply: { creationTime },
-      reply: { content },
+      reply: { content }
     } = this.props;
 
     return (
@@ -19,9 +18,7 @@ class ReplyComponent extends React.Component {
           <p className="reply-creation-time">{creationTime}</p>
         </div>
 
-        <div className="reply-content p-2">
-          {content}
-        </div>
+        <div className="reply-content p-2">{content}</div>
       </div>
     );
   }

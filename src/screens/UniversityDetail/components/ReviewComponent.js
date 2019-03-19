@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../css/ReviewComponent.css';
+import './css/ReviewComponent.css';
 import ReplyComponent from './ReplyComponent';
 
 class ReviewComponent extends React.Component {
@@ -18,7 +18,7 @@ class ReviewComponent extends React.Component {
       <div className="container">
         <div className="row m-0">
           <p className="review-identification">{role || ''}</p>
-          <p className="review-creation-time"></p>
+          <p className="review-creation-time" />
         </div>
         <p
           className={type === 'Khen' ? 'review-type' : 'review-type type-blame'}
