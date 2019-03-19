@@ -47,7 +47,7 @@ class UniversityDetailPage extends React.Component {
     };
 
     return (
-      <div className="container-fluid">
+      <div className="container-fluid my-container">
         <h1>{name}</h1>
         <div className="university-information">
           <img src={logo} className="rounded d-block my-logo" alt="logo" />
@@ -84,8 +84,7 @@ class UniversityDetailPage extends React.Component {
                   data-target="ReviewPostDialog"
                   type="button"
                   className="university-information-details-button-review"
-                  onClick={this.onShow}
-                >
+                  onClick={this.onShow}>
                   Review
                 </button>
               </div>
@@ -94,7 +93,7 @@ class UniversityDetailPage extends React.Component {
         </div>
         <div className="line" />
         <div className="review-number">
-          <p>{`review${numberOfReviews > 1 ? 's' : ''} ${numberOfReviews}`}</p>
+          <p>{`${numberOfReviews} review${numberOfReviews > 1 ? 's' : ''}`}</p>
         </div>
         {reviews &&
           reviews.reverse().map(review => <ReviewComponent review={review} />)}

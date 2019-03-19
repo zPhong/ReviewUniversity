@@ -37,8 +37,9 @@ class ReviewComponent extends React.Component {
   };
 
   formatType = type => {
-    if (type === 'khen') return 'Khen';
-    if (type === 'che') return 'Chê';
+    if (type === 'like') return 'Khen';
+    if (type === 'dislike') return 'Chê';
+    if (type === 'others') return 'Góp ý';
     return '';
   };
 
@@ -69,9 +70,8 @@ class ReviewComponent extends React.Component {
           </p>
           <p className="review-creation-time" />
         </div>
-        <p
-          className={type === 'khen' ? 'review-type' : 'review-type type-blame'}
-        >
+        <p className={type === 'like' ? 'review-type' :
+            type === 'dislike' ? 'review-type type-blame' : 'review-type type-other'}>
           {this.formatType(type)}
         </p>
         <div className="review-content p-2">{context || ''}</div>

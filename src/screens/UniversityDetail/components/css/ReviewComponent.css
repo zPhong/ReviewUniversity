@@ -1,7 +1,7 @@
 .review-container {
     border: 1px solid #4b4b4b;
     background: #FCFCFC;
-    margin: 1rem 3rem 1rem;
+    margin: 1rem 3rem 2rem;
     border-radius: 4px;
     padding: 0.5rem 1rem;
 }
@@ -31,6 +31,10 @@ p {
 
 .type-blame {
     color: red;
+}
+
+.type-other {
+    color: #282c34;
 }
 
 .review-content {
