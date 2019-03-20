@@ -278,7 +278,7 @@ class Home extends React.Component {
     return (
       <div className="Container">
         <div className="px-3 bg-dark pb-1">{this.renderTitle()}</div>
-        <div className="px-3 bg-white pb-1">
+        <div className="px-3 general-content pb-1">
           <UniversityList data={data} displayCount={displayCount} />
           <button
             type="submit"

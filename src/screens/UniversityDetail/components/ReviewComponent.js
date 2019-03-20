@@ -44,8 +44,8 @@ class ReviewComponent extends React.Component {
     return '';
   };
 
-  formatDate = milisec => {
-    return moment(milisec).format('hh:mm:ss A, DD/MM/YYYY');
+  formatDate = milliseconds => {
+    return moment(milliseconds).format('HH:mm, DD/MM/YYYY');
   };
 
   renderReplies = replies => {
@@ -62,7 +62,14 @@ class ReviewComponent extends React.Component {
 
   render() {
     const {
-      review: { id, type, role, context, numberOfReplies, createAt }
+      review: {
+        id,
+        type,
+        role,
+        context,
+        numberOfReplies,
+        createAt
+      }
     } = this.props;
 
     const { displayReplies, replies, show } = this.state;
@@ -75,15 +82,15 @@ class ReviewComponent extends React.Component {
           </p>
           <p className="review-creation-time">{this.formatDate(createAt)}</p>
         </div>
-        <p
-          className={
-            type === 'like'
-              ? 'review-type'
-              : type === 'dislike'
-              ? 'review-type type-blame'
-              : 'review-type type-other'
-          }
-        >
+        <p className={
+            type === 'like' ?
+              'review-type'
+              :
+              (type === 'dislike' ?
+                'review-type type-blame'
+                :
+                'review-type type-other')
+          }>
           {this.formatType(type)}
         </p>
         <div className="review-content p-2">{context || ''}</div>
@@ -91,15 +98,13 @@ class ReviewComponent extends React.Component {
           <button
             type="button"
             className="reply-button btn-info"
-            onClick={this.onShow}
-          >
+            onClick={this.onShow}>
             Reply
           </button>
           <button
             type="button"
             className="show-reply-button"
-            onClick={this.onClickViewReplies}
-          >
+            onClick={this.onClickViewReplies}>
             <u>
               {numberOfReplies > 1
                 ? `(${numberOfReplies} replies)`
@@ -107,13 +112,11 @@ class ReviewComponent extends React.Component {
             </u>
           </button>
         </div>
-        <div
-          className={
-            displayReplies
-              ? 'row m-0 d-block reply-block show-replies'
-              : 'row m-0 d-block reply-block'
-          }
-        >
+        <div className={
+            displayReplies ?
+              'row m-0 d-block reply-block show-replies'
+              :
+              'row m-0 d-block reply-block' }>
           {this.renderReplies(replies)}
         </div>
         {show && (

@@ -3,6 +3,7 @@ import './css/UniversityDetailPage.css';
 import ReviewComponent from './components/ReviewComponent';
 import appModel from '../../api/APIModel';
 import PostDialog from './components/Dialog/PostDialog';
+import BackToTopButton from "./components/BackToTopButton";
 
 class UniversityDetailPage extends React.Component {
   constructor(props) {
@@ -17,9 +18,12 @@ class UniversityDetailPage extends React.Component {
         }
       ]
     };
+
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   async componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
     const data = await appModel.getUniversities('5c7e9dfaf4014336e0a0798b');
     this.setState({ data });
   }
@@ -34,10 +38,30 @@ class UniversityDetailPage extends React.Component {
 
   renderDepartment = () => {};
 
+  handleScroll() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("back-to-top").style.display = "block";
+    }
+    else {
+      document.getElementById("back-to-top").style.display = "none";
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
   render() {
     const {
-      data: { id, name, location, reviews = [], logo, numberOfReviews },
-      show
+      data: {
+        id,
+        name,
+        location,
+        reviews = [],
+        logo,
+        numberOfReviews
+      },
+      show,
     } = this.state;
 
     const universityInformation = {
@@ -47,19 +71,23 @@ class UniversityDetailPage extends React.Component {
     };
 
     return (
-      <div className="container-fluid my-container">
-        <h1>{name}</h1>
-        <div className="university-information">
-          <img src={logo} className="rounded d-block my-logo" alt="logo" />
-          <div className="university-information-details pl-3">
-            <p className="university-information-details-name m-0">{name}</p>
-            <div className="row m-0">
-              <div className="d-block col-lg-4 col-md-8 p-0">
-                <p className="university-information-details-departments m-0">
+      <div className="container-fluid my-container p-0">
+        <div className="row d-flex justify-content-center w-100 m-0 header-view">
+        <div className="col-6 university-information">
+          <div className="col-lg-3 col-12 p-0 d-flex justify-content-center university-image">
+            <img src={logo} className="rounded d-block my-logo" alt="logo" />
+          </div>
+          <div className="col-lg-9 col-12 university-information-details">
+            <div className="university-information-details-name m-0">
+              {name}
+            </div>
+            <div className="row m-0 h-75">
+              <div className="d-block col-lg-5 col-md-12 p-0">
+                <p className="university-information-details-departments m-0 mt-3">
                   {universityInformation.departments.toString().replace(',', ', ')}
                 </p>
-                <p className="university-information-details-location m-0">{location}</p>
-                <div className="university-information-details-praise-and-blame">
+                <p className="university-information-details-location m-0 mt-1">{location}</p>
+                <div className="university-information-details-praise-and-blame mt-1">
                   <a href="./" className="university-information-details-praise text-success">
                     {universityInformation.praiseNumber} khen
                   </a>
@@ -68,7 +96,7 @@ class UniversityDetailPage extends React.Component {
                   </a>
                 </div>
               </div>
-              <div className="col-lg-8 col-md-4 p-0">
+              <div className="col-lg-7 col-md-12 p-0">
                 <button
                   data-toggle="modal"
                   data-target="ReviewPostDialog"
@@ -81,12 +109,15 @@ class UniversityDetailPage extends React.Component {
             </div>
           </div>
         </div>
+        </div>
         <div className="line" />
         <div className="review-number">
           <p>{`${numberOfReviews} review${numberOfReviews > 1 ? 's' : ''}`}</p>
         </div>
         {reviews && reviews.reverse().map((review) => <ReviewComponent review={review} />)}
         {show && <PostDialog universityId={id} onClose={this.onClose} dialogType="Review" />}
+
+        <BackToTopButton  scrollStepInPx="50" delayInMs="16.66"/>
       </div>
     );
   }
