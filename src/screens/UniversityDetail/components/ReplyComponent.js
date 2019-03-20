@@ -15,7 +15,7 @@ class ReplyComponent extends React.Component {
   };
 
   formatDate = milisec => {
-    return moment(milisec).format('hh:mm:ss A, DD/MM/YYYY');
+    return moment(milisec).format('HH:mm, DD/MM/YYYY');
   };
 
   render() {

@@ -64,8 +64,7 @@ p {
 }
 
 .reply-block {
-    overflow-y: scroll;
-    max-height: 500px;
+
 }
 
 .show-replies {

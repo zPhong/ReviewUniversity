@@ -1,6 +1,11 @@
 .Container {
   width: 100vw;
   height: auto;
+  background-color: #e5f1fa !important;
+}
+
+.general-content {
+  background-color: #e5f1fa !important;
 }
 
 .Title h2 {
