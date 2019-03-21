@@ -65,7 +65,7 @@ class UniversityDetailPage extends React.Component {
     } = this.state;
 
     const universityInformation = {
-      departments: ['IT', 'Sex'],
+      departments: ['Kinh tế'],
       praiseNumber: reviews.filter((review) => review.type === 'like').length || 0,
       blameNumber: reviews.filter((review) => review.type === 'dislike').length || 0
     };
