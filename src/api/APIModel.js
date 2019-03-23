@@ -1,31 +1,43 @@
 import apiUrl from './config';
 
 class APIModel {
-  getUniversities = async id => {
+  getUniversities = async (id) => {
     // eslint-disable-next-line no-undef
     return fetch(`${apiUrl}Universities${id ? `/${id}` : ''}`)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         return data;
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('error', error);
       });
   };
 
-  getReply = async id => {
+  getReply = async (id) => {
     // eslint-disable-next-line no-undef
     return fetch(`${apiUrl}Reviews${id ? `/${id}` : ''}`)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         return data;
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('error', error);
       });
   };
 
-  postReview = async reviewData => {
+  getRecentReviews = async () => {
+    // eslint-disable-next-line no-undef
+    return fetch(`${apiUrl}Reviews/newest`)
+      .then((response) => response.json())
+      .then((data) => {
+        return data;
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
+  };
+
+  postReview = async (reviewData) => {
     // eslint-disable-next-line no-undef
     return fetch(`${apiUrl}Reviews`, {
       method: 'post',
@@ -35,15 +47,15 @@ class APIModel {
       },
       body: JSON.stringify(reviewData)
     })
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(responseData => {
+      .then((responseData) => {
         alert(JSON.stringify(responseData));
       });
   };
 
-  postReply = async replyData => {
+  postReply = async (replyData) => {
     // eslint-disable-next-line no-undef
     return fetch(`${apiUrl}Replies`, {
       method: 'post',
@@ -53,15 +65,15 @@ class APIModel {
       },
       body: JSON.stringify(replyData)
     })
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(responseData => {
+      .then((responseData) => {
         alert(JSON.stringify(responseData));
       });
   };
 
-  postUniversity = async universityData => {
+  postUniversity = async (universityData) => {
     // eslint-disable-next-line no-undef
     return fetch(`${apiUrl}Universities`, {
       method: 'post',
@@ -71,10 +83,10 @@ class APIModel {
       },
       body: JSON.stringify(universityData)
     })
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(responseData => {
+      .then((responseData) => {
         alert(JSON.stringify(responseData));
       });
   };
