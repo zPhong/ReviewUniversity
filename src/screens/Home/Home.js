@@ -278,7 +278,7 @@ class Home extends React.Component {
       <div className="col-4 d-flex flex-column pl-5">
         <h1>Recent reviews</h1>
         {data.map((item) => (
-          <p className="d-flex flex-column pb-3">
+          <p className="d-flex flex-column pb-3 recentContainer">
             <a href="#">{item.context}</a>
             <p className="max-text">{this.formatDate(item.createAt)}</p>
           </p>

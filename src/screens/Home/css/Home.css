@@ -65,5 +65,8 @@
   display: block;
 }
 
-.max-text {
+.recentContainer a {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
