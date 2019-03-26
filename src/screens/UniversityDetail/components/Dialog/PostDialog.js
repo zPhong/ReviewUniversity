@@ -67,8 +67,8 @@ class ReviewPostDialog extends React.Component {
       type,
       context: content
     };
-    if (!captchaChecked || content.length < 5) {
-      alert('Xin điền đầy đủ các thông tin');
+    if (!captchaChecked || content.length < 15) {
+      alert('Vui lòng kiểm tra lại nội dung nhập có đủ tối thiểu 15 chữ hay chưa');
       return;
     }
     if (dialogType === 'Review') await APIModel.postReview(data);
