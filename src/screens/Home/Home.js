@@ -3,6 +3,7 @@ import AutoCompleteTextInput from './components/AutoCompleteTextInput';
 import './css/Home.css';
 import UniversityList from './components/UniversityList';
 import apiModel from '../../api/APIModel';
+import moment from 'moment';
 
 const Title = 'Review trường đại học';
 const countries = [
@@ -235,14 +236,22 @@ class Home extends React.Component {
     super(props);
     this.state = {
       displayCount: 3,
-      data: []
+      data: [],
+      recentReviews: []
     };
   }
 
   async componentWillMount() {
     const data = await apiModel.getUniversities();
-    this.setState({ data });
+    let recentReviews = await apiModel.getRecentReviews();
+    recentReviews = recentReviews.reverse();
+    // console.log("aaa", recentReviews);
+    this.setState({ data, recentReviews });
   }
+
+  formatDate = (milisec) => {
+    return moment(milisec).format('HH:mm, DD/MM/YYYY');
+  };
 
   renderTitle = () => {
     return (
@@ -254,16 +263,26 @@ class Home extends React.Component {
               <AutoCompleteTextInput suggestions={countries} />
             </div>
             <div className="col-auto px-0">
-              <button
-                className="btn btn-danger"
-                type="button"
-                id="button-addon2"
-              >
+              <button className="btn btn-danger" type="button" id="button-addon2">
                 Search
               </button>
             </div>
           </div>
         </form>
+      </div>
+    );
+  };
+
+  renderRecentReviews = (data) => {
+    return (
+      <div className="col-4 d-flex flex-column pl-5">
+        <h1>Recent reviews</h1>
+        {data.map((item) => (
+          <p className="d-flex flex-column pb-3 recentContainer">
+            <a href="#">{item.context}</a>
+            <p className="max-text">{this.formatDate(item.createAt)}</p>
+          </p>
+        ))}
       </div>
     );
   };
@@ -274,19 +293,20 @@ class Home extends React.Component {
   };
 
   render() {
-    const { displayCount, data } = this.state;
+    const { displayCount, data, recentReviews } = this.state;
     return (
       <div className="Container">
         <div className="px-3 bg-dark pb-1">{this.renderTitle()}</div>
         <div className="px-3 general-content pb-1">
-          <UniversityList data={data} displayCount={displayCount} />
-          <button
-            type="submit"
-            className="btn btn-success ml-4"
-            onClick={this.onShowMoreClick}
-          >
-            Xem thêm
-          </button>
+          <div className="row">
+            <div className="col-8">
+              <UniversityList data={data} displayCount={displayCount} />
+              <button type="submit" className="btn btn-success ml-4" onClick={this.onShowMoreClick}>
+                Xem thêm
+              </button>
+            </div>
+            {this.renderRecentReviews(recentReviews)}
+          </div>
         </div>
       </div>
     );

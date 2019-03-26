@@ -64,3 +64,9 @@
   height: 50px;
   display: block;
 }
+
+.recentContainer a {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
