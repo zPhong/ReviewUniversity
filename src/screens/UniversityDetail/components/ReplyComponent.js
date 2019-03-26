@@ -35,7 +35,7 @@ class ReplyComponent extends React.Component {
         <div className="row m-0">
           <p className="reply-identification">{Role[role]}</p>
           <a className="reply-index" href="#">
-            #{`${index}   `}
+            #{`${index + 1}`}
           </a>
         </div>
 
