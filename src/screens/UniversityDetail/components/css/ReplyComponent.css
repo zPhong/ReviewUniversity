@@ -1,0 +1,58 @@
+.reply-container {
+  border: 1px solid #4b4b4b;
+  margin-left: 2rem !important;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: #ffffff;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+p {
+  margin: 0;
+}
+
+.reply-identification {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  color: #8c8c8c;
+}
+
+.reply-index {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  color: #8c8c8c;
+  margin-left: auto;
+}
+
+.reply-creation-time {
+  margin-top: 0.5rem;
+  margin-left: auto;
+  font-weight: 300;
+}
+
+.reply-content {
+  border: 1px solid #979797;
+  background: #fcfcfc;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+}
+
+.reply-type {
+  color: green;
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.type-blame {
+  color: red;
+}
+
+.type-other {
+  color: #282c34;
+}
