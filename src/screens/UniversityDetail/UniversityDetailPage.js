@@ -19,12 +19,14 @@ class UniversityDetailPage extends React.Component {
       ]
     };
 
-   // this.handleScroll = this.handleScroll.bind(this);
+    // this.handleScroll = this.handleScroll.bind(this);
   }
 
   async componentDidMount() {
     window.addEventListener('scroll', UniversityDetailPage.handleScroll);
-    const data = await appModel.getUniversities('5c7e9dfaf4014336e0a0798b');
+    let data = await appModel.getUniversities('5c7e9dfaf4014336e0a0798b');
+    const reviews = data.reviews.reverse();
+    data.reviews = reviews;
     this.setState({ data });
   }
 
@@ -36,7 +38,7 @@ class UniversityDetailPage extends React.Component {
     this.setState({ show: true });
   };
 
-  renderDepartment = () => {};
+  renderDepartment = () => { };
 
   static handleScroll() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -105,7 +107,7 @@ class UniversityDetailPage extends React.Component {
         <div className="review-number">
           <p>{`${numberOfReviews} review${numberOfReviews > 1 ? 's' : ''}`}</p>
         </div>
-        {reviews && reviews.reverse().map((review) => <ReviewComponent review={review} />)}
+        {reviews && reviews.map((review) => <ReviewComponent review={review} />)}
         {show && <PostDialog universityId={id} onClose={this.onClose} dialogType="Review" />}
 
         <BackToTopButton scrollStepInPx="50" delayInMs="16.66" />
