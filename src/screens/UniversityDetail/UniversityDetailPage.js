@@ -19,11 +19,11 @@ class UniversityDetailPage extends React.Component {
       ]
     };
 
-    this.handleScroll = this.handleScroll.bind(this);
+   // this.handleScroll = this.handleScroll.bind(this);
   }
 
   async componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', UniversityDetailPage.handleScroll);
     const data = await appModel.getUniversities('5c7e9dfaf4014336e0a0798b');
     this.setState({ data });
   }
@@ -38,7 +38,7 @@ class UniversityDetailPage extends React.Component {
 
   renderDepartment = () => {};
 
-  handleScroll() {
+  static handleScroll() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       document.getElementById('back-to-top').style.display = 'block';
     } else {
@@ -47,7 +47,7 @@ class UniversityDetailPage extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', UniversityDetailPage.handleScroll);
   }
 
   render() {
