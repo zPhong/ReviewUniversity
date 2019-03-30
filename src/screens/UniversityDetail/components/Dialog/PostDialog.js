@@ -1,9 +1,14 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-alert */
 /* eslint-disable react/no-find-dom-node */
 import * as React from 'react';
 import $ from 'jquery';
 import ReactDOM from 'react-dom';
+import Recaptcha from 'react-recaptcha';
 import './css/PostDialog.css';
 import APIModel from '../../../../api/APIModel';
+
+const captchaKeyApi = '6LeR_JkUAAAAAGErmsKDv410V24gf5bHBHfeyfug';
 
 const Roles = {
   student: 'Học sinh',
@@ -32,7 +37,12 @@ const dialogDisplayType = {
 class ReviewPostDialog extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { role: 'others', type: 'others', content: '' };
+    this.state = {
+      role: 'others',
+      type: 'others',
+      content: '',
+      captchaChecked: false
+    };
   }
 
   componentDidMount() {
@@ -41,8 +51,12 @@ class ReviewPostDialog extends React.Component {
     $(ReactDOM.findDOMNode(this)).on('hidden.bs.modal', onClose);
   }
 
+  callback = () => {
+    this.setState({ captchaChecked: true });
+  };
+
   onSubmit = async () => {
-    const { role, type, content } = this.state;
+    const { role, type, content, captchaChecked } = this.state;
     const { universityId, reviewId, dialogType } = this.props;
 
     const id = dialogType === 'Review' ? { universityId } : { reviewId };
@@ -53,7 +67,10 @@ class ReviewPostDialog extends React.Component {
       type,
       context: content
     };
-
+    if (!captchaChecked || content.length < 15) {
+      alert('Vui lòng kiểm tra lại nội dung nhập có đủ tối thiểu 15 chữ hay chưa');
+      return;
+    }
     if (dialogType === 'Review') await APIModel.postReview(data);
     else await APIModel.postReply(data);
   };
@@ -69,12 +86,12 @@ class ReviewPostDialog extends React.Component {
             <select
               className="dropdown-toggle btn-secondary btn"
               value={role}
-              onChange={(e) => {
+              onChange={e => {
                 this.setState({ role: e.target.value });
               }}
             >
               <p> {role || 'Vai trò của bạn'}</p>
-              {Object.keys(Roles).map((key) => (
+              {Object.keys(Roles).map(key => (
                 <option className="dropdown-item" value={key}>
                   {Roles[key]}
                 </option>
@@ -88,12 +105,12 @@ class ReviewPostDialog extends React.Component {
             <select
               className="dropdown-toggle btn-secondary btn"
               value={type}
-              onChange={(e) => {
+              onChange={e => {
                 this.setState({ type: e.target.value });
               }}
             >
               <p> {role || 'Đánh giá của bạn'}</p>
-              {Object.keys(Types[dialogType]).map((key) => (
+              {Object.keys(Types[dialogType]).map(key => (
                 <option className="dropdown-item" value={key}>
                   {Types[dialogType][key]}
                 </option>
@@ -109,7 +126,7 @@ class ReviewPostDialog extends React.Component {
             placeholder="Nhận xét đi..."
             rows={5}
             required
-            onChange={(e) => {
+            onChange={e => {
               this.setState({ content: e.target.value });
             }}
           />
@@ -126,16 +143,39 @@ class ReviewPostDialog extends React.Component {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={onClose}>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                onClick={onClose}
+              >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div className="modal-body">{this.renderContent()}</div>
+            <div className="modal-body">
+              {this.renderContent()}
+              <Recaptcha
+                ref={e => (this.recaptchaInstance = e)}
+                size="normal"
+                sitekey={captchaKeyApi}
+                verifyCallback={this.callback}
+              />
+            </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={onClose}>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-dismiss="modal"
+                onClick={onClose}
+              >
                 Đóng
               </button>
-              <button type="button" className="btn btn-primary" onClick={this.onSubmit}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={this.onSubmit}
+              >
                 {dialogDisplayType[dialogType] || 'Đăng'}
               </button>
             </div>
