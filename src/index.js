@@ -12,7 +12,6 @@ import {
 import Home from './screens/Home/Home';
 import UniversityDetailPage from './screens/UniversityDetail/UniversityDetailPage';
 import Notfound from './screens/notfound';
-import AddMoreUniversity from './screens/AddMoreUniversity/AddMoreUniversity';
 import { logo } from './assets';
 
 function renderHeader() {
@@ -64,9 +63,7 @@ const routing = (
     <div>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/:id" component={UniversityDetailPage} />
-        <Route path="/addmore" component={AddMoreUniversity} />
-        <Route path="/:id" component={UniversityDetailPage}/>
+        <Route path="/university/:universityId" render={props => <UniversityDetailPage {...props}/>} />
         <Route component={Notfound} />
       </Switch>
     </div>

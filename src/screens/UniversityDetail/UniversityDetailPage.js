@@ -23,8 +23,9 @@ class UniversityDetailPage extends React.Component {
   }
 
   async componentDidMount() {
+    const {match: {params}} = this.props;
     window.addEventListener('scroll', UniversityDetailPage.handleScroll);
-    let data = await appModel.getUniversities('5c7e9dfaf4014336e0a0798b');
+    let data = await appModel.getUniversities(params.universityId);
     const reviews = data.reviews.reverse();
     data.reviews = reviews;
     this.setState({ data });
