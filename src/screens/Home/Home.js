@@ -265,9 +265,7 @@ class Home extends React.Component {
           textColor="#676767"
           logoSrc={require('./../../assets/icons/logo.svg')}
           text="đang tải dữ liệu"
-        >
-          <div>Loadable content</div>
-        </LoadingScreen>
+        />
         <h2 className="font-weight-bold text-light mb-5">{Title}</h2>
         <form className="mb-3">
           <div className="form-row TitleForm">

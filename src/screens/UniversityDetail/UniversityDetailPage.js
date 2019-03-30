@@ -76,9 +76,7 @@ class UniversityDetailPage extends React.Component {
           textColor="#676767"
           logoSrc={require('./../../assets/icons/logo.svg')}
           text="đang tải dữ liệu"
-        >
-          <div>Loadable content</div>
-        </LoadingScreen>
+        />
         <div className="row d-flex justify-content-center w-100 m-0 header-view">
           <div className="col-6 university-information">
             <div className="col-lg-3 col-12 p-0 d-flex justify-content-center university-image">
