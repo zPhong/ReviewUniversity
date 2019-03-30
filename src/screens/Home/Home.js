@@ -4,6 +4,7 @@ import './css/Home.css';
 import UniversityList from './components/UniversityList';
 import apiModel from '../../api/APIModel';
 import moment from 'moment';
+import LoadingScreen from 'react-loading-screen';
 
 const Title = 'Review trường đại học';
 const countries = [
@@ -237,7 +238,8 @@ class Home extends React.Component {
     this.state = {
       displayCount: 3,
       data: [],
-      recentReviews: []
+      recentReviews: [],
+      loading: true
     };
   }
 
@@ -246,7 +248,7 @@ class Home extends React.Component {
     let recentReviews = await apiModel.getRecentReviews();
     recentReviews = recentReviews.reverse();
     // console.log("aaa", recentReviews);
-    this.setState({ data, recentReviews });
+    this.setState({ data, recentReviews, loading: false });
   }
 
   formatDate = (milisec) => {
@@ -256,6 +258,16 @@ class Home extends React.Component {
   renderTitle = () => {
     return (
       <div className="Title">
+        <LoadingScreen
+          loading={this.state.loading}
+          bgColor="#f1f1f1"
+          spinnerColor="#9ee5f8"
+          textColor="#676767"
+          logoSrc={require('./../../assets/icons/logo.svg')}
+          text="đang tải dữ liệu"
+        >
+          <div>Loadable content</div>
+        </LoadingScreen>
         <h2 className="font-weight-bold text-light mb-5">{Title}</h2>
         <form className="mb-3">
           <div className="form-row TitleForm">
