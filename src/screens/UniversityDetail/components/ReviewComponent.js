@@ -98,7 +98,7 @@ class ReviewComponent extends React.Component {
         <div className={displayReplies ? 'row m-0 d-block reply-block show-replies' : 'row m-0 d-block reply-block'}>
           {this.renderReplies(replies)}
         </div>
-        {show && <PostDialog reviewId={id} onClose={this.onClose} dialogType="Reply" />}
+        {show && <PostDialog context={context} reviewId={id} onClose={this.onClose} dialogType="Reply" />}
       </div>
     );
   }
