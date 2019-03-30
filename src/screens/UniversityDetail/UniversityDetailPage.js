@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './css/UniversityDetailPage.css';
+import LoadingScreen from 'react-loading-screen';
 import ReviewComponent from './components/ReviewComponent';
 import appModel from '../../api/APIModel';
 import PostDialog from './components/Dialog/PostDialog';
@@ -16,7 +17,8 @@ class UniversityDetailPage extends React.Component {
           location: '',
           reviews: []
         }
-      ]
+      ],
+      loading: true
     };
 
     // this.handleScroll = this.handleScroll.bind(this);
@@ -28,7 +30,7 @@ class UniversityDetailPage extends React.Component {
     let data = await appModel.getUniversities(params.universityId);
     const reviews = data.reviews.reverse();
     data.reviews = reviews;
-    this.setState({ data });
+    this.setState({ data, loading: false });
   }
 
   onClose = () => {
@@ -39,7 +41,7 @@ class UniversityDetailPage extends React.Component {
     this.setState({ show: true });
   };
 
-  renderDepartment = () => { };
+  renderDepartment = () => {};
 
   static handleScroll() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -56,7 +58,8 @@ class UniversityDetailPage extends React.Component {
   render() {
     const {
       data: { id, name, location, reviews = [], logo, numberOfReviews },
-      show
+      show,
+      loading
     } = this.state;
 
     const universityInformation = {
@@ -67,6 +70,14 @@ class UniversityDetailPage extends React.Component {
 
     return (
       <div className="container-fluid my-container p-0">
+        <LoadingScreen
+          loading={loading}
+          bgColor="#f1f1f1"
+          spinnerColor="#9ee5f8"
+          textColor="#676767"
+          logoSrc={require('./../../assets/icons/logo.svg')}
+          text="đang tải dữ liệu"
+        />
         <div className="row d-flex justify-content-center w-100 m-0 header-view">
           <div className="col-6 university-information">
             <div className="col-lg-3 col-12 p-0 d-flex justify-content-center university-image">

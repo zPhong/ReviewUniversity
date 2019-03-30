@@ -86,12 +86,12 @@ class ReviewPostDialog extends React.Component {
             <select
               className="dropdown-toggle btn-secondary btn"
               value={role}
-              onChange={e => {
+              onChange={(e) => {
                 this.setState({ role: e.target.value });
               }}
             >
               <p> {role || 'Vai trò của bạn'}</p>
-              {Object.keys(Roles).map(key => (
+              {Object.keys(Roles).map((key) => (
                 <option className="dropdown-item" value={key}>
                   {Roles[key]}
                 </option>
@@ -105,12 +105,12 @@ class ReviewPostDialog extends React.Component {
             <select
               className="dropdown-toggle btn-secondary btn"
               value={type}
-              onChange={e => {
+              onChange={(e) => {
                 this.setState({ type: e.target.value });
               }}
             >
               <p> {role || 'Đánh giá của bạn'}</p>
-              {Object.keys(Types[dialogType]).map(key => (
+              {Object.keys(Types[dialogType]).map((key) => (
                 <option className="dropdown-item" value={key}>
                   {Types[dialogType][key]}
                 </option>
@@ -126,7 +126,7 @@ class ReviewPostDialog extends React.Component {
             placeholder="Nhận xét đi..."
             rows={5}
             required
-            onChange={e => {
+            onChange={(e) => {
               this.setState({ content: e.target.value });
             }}
           />
@@ -136,46 +136,35 @@ class ReviewPostDialog extends React.Component {
   };
 
   render() {
-    const { onClose, dialogType } = this.props;
-
+    const { onClose, dialogType, context } = this.props;
     return (
       <div className="modal fade">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-                onClick={onClose}
-              >
+              {context && (
+                <div className="alert alert-info contentReview" role="alert">
+                  {context}
+                </div>
+              )}
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body">
               {this.renderContent()}
               <Recaptcha
-                ref={e => (this.recaptchaInstance = e)}
+                ref={(e) => (this.recaptchaInstance = e)}
                 size="normal"
                 sitekey={captchaKeyApi}
                 verifyCallback={this.callback}
               />
             </div>
             <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-dismiss="modal"
-                onClick={onClose}
-              >
+              <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={onClose}>
                 Đóng
               </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={this.onSubmit}
-              >
+              <button type="button" className="btn btn-primary" onClick={this.onSubmit}>
                 {dialogDisplayType[dialogType] || 'Đăng'}
               </button>
             </div>
