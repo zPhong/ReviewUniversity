@@ -25,8 +25,7 @@ class Home extends React.Component {
     universities = data.map((uni) => {
       return { name: uni.name, id: uni.id };
     });
-    let recentReviews = await apiModel.getRecentReviews();
-    recentReviews = recentReviews.reverse();
+    const recentReviews = await apiModel.getRecentReviews();
     // console.log("aaa", recentReviews);
     this.setState({ data, recentReviews, loading: false });
   }
