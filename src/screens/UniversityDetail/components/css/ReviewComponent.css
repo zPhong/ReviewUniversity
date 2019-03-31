@@ -1,6 +1,6 @@
 .review-container {
   background: #fff;
-  margin: 1rem 1rem 1.5rem;
+  margin: 1rem 0 1.5rem;
   border-radius: 4px;
   padding: 0.5rem 1rem;
 }
@@ -10,8 +10,8 @@ p {
 }
 
 .review-identification {
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 1.2rem;
+  font-weight: 500;
   color: #90949c;
 }
 
@@ -26,7 +26,7 @@ p {
 .review-type {
   color: green;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 0.8rem;
   margin-bottom: 0.5rem;
 }
 
@@ -38,7 +38,6 @@ p {
 
 .type-other {
   color: #90949c;
-  font-weight: 450;
   font-size: 14px;
 }
 
@@ -46,7 +45,7 @@ p {
   margin: 0 0.6rem;
   border-radius: 3px;
   color: black;
-  font-size: 18px;
+  font-size: 1rem;
 }
 
 .reply-button {
