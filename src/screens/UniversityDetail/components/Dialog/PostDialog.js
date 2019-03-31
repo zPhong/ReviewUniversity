@@ -71,8 +71,20 @@ class ReviewPostDialog extends React.Component {
       alert('Vui lòng kiểm tra lại nội dung nhập có đủ tối thiểu 15 chữ hay chưa');
       return;
     }
-    if (dialogType === 'Review') await APIModel.postReview(data);
-    else await APIModel.postReply(data);
+
+    let result;
+    if (dialogType === 'Review')
+    {
+      result =  await APIModel.postReview(data);
+    }
+    else result = await APIModel.postReply(data);
+
+    if(result !== true)
+    {
+       alert(result);
+    }
+    document.getElementById('btnClose').click();
+
   };
 
   renderContent = () => {
@@ -161,7 +173,7 @@ class ReviewPostDialog extends React.Component {
               />
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={onClose}>
+              <button id="btnClose" type="button" className="btn btn-secondary" data-dismiss="modal" onClick={onClose}>
                 Đóng
               </button>
               <button type="button" className="btn btn-primary" onClick={this.onSubmit}>
