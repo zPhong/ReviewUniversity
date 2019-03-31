@@ -70,3 +70,25 @@ p {
 .show-replies {
     border-top: 1px dashed #4b4b4b;
 }
+
+.ShareContainer{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.ShareContainer p {
+    margin-right: 5px;
+    font-size: 1rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+
+.Demo__some-network__share-button {
+    cursor: pointer;
+    margin-left: 3px;
+}
+
+.Demo__some-network__share-button:hover:not(:active) {
+    opacity: 0.75;
+    margin-left: 3px;
+}
