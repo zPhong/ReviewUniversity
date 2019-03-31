@@ -3,12 +3,7 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 import './css/index.css';
-import {
-  Route,
-  NavLink,
-  BrowserRouter as Router,
-  Switch
-} from 'react-router-dom';
+import { Route, NavLink, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Home from './screens/Home/Home';
 import UniversityDetailPage from './screens/UniversityDetail/UniversityDetailPage';
 import Notfound from './screens/notfound';
@@ -34,21 +29,8 @@ function renderHeader() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ml-auto">
-            <NavLink
-              exact
-              activeClassName="active"
-              className="nav-item nav-link active"
-              to="/"
-            >
+            <NavLink exact activeClassName="active" className="nav-item nav-link active" to="/">
               Home <span className="sr-only">(current)</span>
-            </NavLink>
-            <NavLink
-              activeClassName="active"
-              to="/addmore"
-              className="nav-item nav-link"
-              href="#"
-            >
-              Edit
             </NavLink>
           </div>
         </div>
@@ -63,7 +45,7 @@ const routing = (
     <div>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/university/:universityId" render={props => <UniversityDetailPage {...props}/>} />
+        <Route path="/university/:universityId" render={(props) => <UniversityDetailPage {...props} />} />
         <Route component={Notfound} />
       </Switch>
     </div>

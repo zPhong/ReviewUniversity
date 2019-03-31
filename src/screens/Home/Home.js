@@ -7,6 +7,7 @@ import moment from 'moment';
 import LoadingScreen from 'react-loading-screen';
 
 const Title = 'Review trường đại học';
+const subTitle = 'Hóng phốt, drama của hơn 100 trường đại học tại Việt Nam';
 let universities = [];
 
 class Home extends React.Component {
@@ -46,6 +47,7 @@ class Home extends React.Component {
           text="đang tải dữ liệu"
         />
         <h2 className="font-weight-bold text-light mb-5">{Title}</h2>
+        <h5 className="font-weight-bold text-light mb-5">{subTitle}</h5>
         <form className="mb-3">
           <div className="form-row TitleForm">
             <div className="d-flex flex-fill h-100">
@@ -53,7 +55,7 @@ class Home extends React.Component {
             </div>
             <div className="col-auto px-0">
               <button className="btn btn-danger" type="button" id="button-addon2">
-                Search
+                Tìm kiếm
               </button>
             </div>
           </div>
