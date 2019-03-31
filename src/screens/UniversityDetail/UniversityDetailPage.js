@@ -27,7 +27,7 @@ class UniversityDetailPage extends React.Component {
     async componentDidMount() {
         const {match: {params}, location: {search}} = this.props;
         window.addEventListener('scroll', UniversityDetailPage.handleScroll);
-        const start = search.indexOf('?%27');
+        const start = search.indexOf('?');
         const end = search.indexOf('&fbclid=');
 
         let data = await appModel.getUniversities(params.universityId);
@@ -35,7 +35,7 @@ class UniversityDetailPage extends React.Component {
         data.reviews = reviews;
         this.setState({data, loading: false});
 
-        this.scrollToReview(search.slice(start?start+4:0,end||null));
+        this.scrollToReview(search.slice(start?start+1:0,end||null));
     }
 
     componentWillUnmount() {

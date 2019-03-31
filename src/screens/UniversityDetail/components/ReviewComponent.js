@@ -72,7 +72,6 @@ class ReviewComponent extends React.Component {
 
     render() {
         const {
-            universityId,
             review: {id, type, role, context, numberOfReplies, createAt}
         } = this.props;
 
@@ -102,7 +101,7 @@ class ReviewComponent extends React.Component {
                     <div className="ShareContainer">
                         <p>Share </p>
                     <FacebookShareButton
-                        url={`${universityId}'?'${id}`}
+                        url={`${document.URL}?${id}`}
                         quote={`"${context}"`}
                         className="Demo__some-network__share-button">
                         <FacebookIcon
