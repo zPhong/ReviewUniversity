@@ -32,8 +32,10 @@ class UniversityDetailPage extends React.Component {
     window.addEventListener('scroll', UniversityDetailPage.handleScroll);
     const endPos = search.indexOf('&fbclid=');
     const data = await appModel.getUniversities(params.universityId);
-    const reviews = data.reviews.reverse();
-    data.reviews = reviews;
+    if(data) {
+        const reviews = data.reviews.reverse();
+        data.reviews = reviews;
+    }
     this.setState({ data, loading: false });
 
     this.scrollToReview(search.slice(1, endPos === -1 ? undefined : endPos));
@@ -113,7 +115,7 @@ class UniversityDetailPage extends React.Component {
                     </a>
                   </div>
                 </div>
-                <div className="col-lg-7 col-md-12 p-0">
+                <div className="col-lg-7 col-md-12 p-0 university-information-details-button-container">
                   <button
                     data-toggle="modal"
                     data-target="ReviewPostDialog"
