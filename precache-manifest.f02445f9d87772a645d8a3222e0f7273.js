@@ -12,15 +12,15 @@ self.__precacheManifest = [
     "url": "/ReviewUniversity/static/js/runtime~main.3572117d.js"
   },
   {
-    "revision": "600958e9076c461fef72",
-    "url": "/ReviewUniversity/static/js/main.600958e9.chunk.js"
+    "revision": "4458ff79a8c7802af539",
+    "url": "/ReviewUniversity/static/js/main.4458ff79.chunk.js"
   },
   {
     "revision": "cb7498fd6cc4eb5e1061",
     "url": "/ReviewUniversity/static/js/2.cb7498fd.chunk.js"
   },
   {
-    "revision": "600958e9076c461fef72",
+    "revision": "4458ff79a8c7802af539",
     "url": "/ReviewUniversity/static/css/main.af7e012f.chunk.css"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/ReviewUniversity/static/css/2.893b7da7.chunk.css"
   },
   {
-    "revision": "160b279cffce0440b48c4048d069b2fe",
+    "revision": "ee186471ccef4d02b27ff9c5ed66d081",
     "url": "/ReviewUniversity/index.html"
   }
 ];
