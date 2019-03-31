@@ -1,5 +1,5 @@
 .reply-container {
-  margin-left: 2rem !important;
+  margin-left: 1.5rem !important;
   padding-left: 15px;
   padding-right: 15px;
   background: #f2f3f5;
@@ -38,7 +38,7 @@ p {
   border-radius: 3px;
   color: black;
   font-size: 18px;
-  margin: 0 0.6rem;
+  margin: 0 0.5rem;
 }
 
 .reply-type {
