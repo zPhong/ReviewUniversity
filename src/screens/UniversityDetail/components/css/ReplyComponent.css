@@ -1,0 +1,55 @@
+.reply-container {
+  margin-left: 1.5rem !important;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: #f2f3f5;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+p {
+  margin: 0;
+}
+
+.reply-identification {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  color: #90949c;
+}
+
+.reply-index {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  color: #90949c;
+  margin-left: auto;
+}
+
+.reply-creation-time {
+  margin-left: auto;
+  font-weight: 400;
+  color: #90949c;
+}
+
+.reply-content {
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+  color: black;
+  font-size: 18px;
+  margin: 0 0.5rem;
+}
+
+.reply-type {
+  color: green;
+  margin-bottom: 0.5rem;
+}
+
+.type-blame {
+  color: red;
+}
+
+.type-other {
+  color: #90949c;
+}

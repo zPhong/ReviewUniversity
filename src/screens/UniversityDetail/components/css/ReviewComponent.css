@@ -1,0 +1,103 @@
+.review-container {
+  background: #fff;
+  margin: 1rem 0 1.5rem;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+}
+
+p {
+  margin: 0;
+}
+
+.review-identification {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #90949c;
+}
+
+.review-creation-time {
+  margin-top: 0.5rem;
+  margin-bottom: 0rem;
+  margin-left: auto;
+  font-weight: 400;
+  color: #90949c;
+}
+
+.review-type {
+  color: green;
+  font-weight: 400;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.type-blame {
+  color: red;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.type-other {
+  color: #90949c;
+  font-size: 14px;
+}
+
+.review-content {
+  margin: 0 0.6rem;
+  border-radius: 3px;
+  color: black;
+  font-size: 1rem;
+}
+
+.reply-button {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-radius: 5px;
+  border: 0 solid black;
+  min-width: 80px;
+  font-weight: 500;
+  outline: 0 !important;
+  min-height: 35px;
+}
+
+.show-reply-button {
+  background-color: transparent;
+  border-width: 0;
+  color: #365899;
+  outline: 0 !important;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.reply-block {
+}
+
+.show-replies {
+  border-top: 1px dashed #4b4b4b;
+}
+
+.ShareContainer {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.ShareContainer p {
+  margin-right: 5px;
+  font-size: 1rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.Demo__some-network__share-button {
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+.Demo__some-network__share-button:hover:not(:active) {
+  opacity: 0.75;
+  margin-left: 3px;
+}
+
+.Loading {
+  width: 100%;
+}

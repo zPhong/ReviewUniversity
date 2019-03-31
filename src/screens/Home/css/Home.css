@@ -1,0 +1,160 @@
+.Container {
+  width: 100vw;
+  height: auto;
+  background-color: #e9ebee !important;
+}
+
+.general-content {
+  background-color: #e9ebee !important;
+}
+
+.button-search {
+  min-width: 100px;
+}
+
+.title-container h2 {
+  padding-left: 15vw;
+  padding-right: 15vw;
+}
+
+.Title h5 {
+  padding-left: 15vw;
+  padding-right: 15vw;
+}
+
+.title-container h5 {
+  padding-left: 15vw;
+  padding-right: 15vw;
+}
+
+.TitleForm {
+  padding-left: 15vw;
+  padding-right: 15vw;
+  height: 50px;
+}
+
+.TitleForm div > div {
+  height: 60px;
+  margin-right: 2rem;
+}
+
+.TitleForm > div button {
+  height: 100%;
+}
+
+.recent-reviews-container {
+  padding: 3rem 0 0 1rem;
+  overflow: hidden;
+}
+
+.recent-reviews-content {
+  display: flex;
+}
+
+.btn-center {
+  margin-left: 48% !important;
+}
+
+.recent-reviews-content > a {
+  padding-left: 0.5rem;
+  text-decoration: none !important;
+  color: #5081db;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.recent-reviews-content > a:hover {
+  color: #4b4b4b;
+  font-weight: 700;
+}
+
+.recent-reviews-details {
+  display: flex;
+  padding-left: 1.1rem;
+}
+
+.recent-reviews-details > a {
+  padding-right: 0.3rem;
+}
+
+.recent-reviews-details > p {
+  padding-left: 0.3rem;
+}
+
+@media (max-width: 768px) {
+  .Container div button {
+    margin-left: 0 !important;
+  }
+
+  .title-container h2 {
+    padding: 0;
+    text-align: center;
+  }
+
+  .TitleForm {
+    padding: 0;
+    height: auto;
+  }
+
+  .TitleForm div > div {
+    margin-right: 0;
+    height: 50px;
+    flex: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .TitleForm > div {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .TitleForm > div button {
+    width: 100%;
+  }
+}
+
+.Logo {
+  width: 50px;
+  height: 50px;
+  display: block;
+}
+
+.recentContainer a {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* ===========================================================================
+/*                              RESPONSIVE
+/* ===========================================================================
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 360px) {
+  .title-container h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .recent-reviews-container {
+    padding: 1rem 0 0 3rem;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
