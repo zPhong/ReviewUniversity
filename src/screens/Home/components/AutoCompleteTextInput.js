@@ -66,7 +66,7 @@ class Autocomplete extends React.Component {
         );
       }
       return (
-        <div className="no-suggestions">
+        <div className="no-suggestions w-100 p-0 m-0">
           <em>Không có kết quả !!</em>
         </div>
       );
@@ -85,7 +85,7 @@ class Autocomplete extends React.Component {
             <input
               type="text"
               onBlur={this.onBlur}
-              className="form-control h-100 border-0"
+              className="form-control border-0 pl-3 auto-complete-input"
               placeholder="Tìm theo tên trường đại học / cao đẳng"
               aria-label="Tìm theo tên trường đại học / cao đẳng"
               aria-describedby="button-addon2"
