@@ -30,7 +30,7 @@ function renderHeader() {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ml-auto">
             <NavLink exact activeClassName="active" className="nav-item nav-link active" to="/">
-              Home <span className="sr-only">(current)</span>
+              Trang chủ <span className="sr-only">(current)</span>
             </NavLink>
           </div>
         </div>
@@ -49,6 +49,20 @@ const routing = (
         <Route component={Notfound} />
       </Switch>
     </div>
+
+    <footer className="page-footer font-small blue">
+      <div className="footer-copyright text-center py-3">
+        Mọi góp ý liên hệ gmail:
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=pmclgroup.vn@gmail.com"
+        >
+          {' '}
+          pmclgroup.vn@gmail.com
+        </a>
+      </div>
+    </footer>
   </Router>
 );
 

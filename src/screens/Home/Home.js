@@ -67,7 +67,7 @@ class Home extends React.Component {
   renderRecentReviews = (data) => {
     return (
       <div className="col-4 d-flex flex-column pl-5">
-        <h1>Recent reviews</h1>
+        <h1>Nhận xét gần đây</h1>
         {data.map((item, index) => (
           <p key={index} className="d-flex flex-column pb-3 recentContainer">
             <a href={`/university/${item.universityId}`}>{item.context}</a>
