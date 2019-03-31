@@ -27,15 +27,13 @@ class UniversityDetailPage extends React.Component {
     async componentDidMount() {
         const {match: {params}, location: {search}} = this.props;
         window.addEventListener('scroll', UniversityDetailPage.handleScroll);
-        const start = search.indexOf('?');
-        const end = search.indexOf('&fbclid=');
-
+        const endPos = search.indexOf('&fbclid=');
         let data = await appModel.getUniversities(params.universityId);
         const reviews = data.reviews.reverse();
         data.reviews = reviews;
         this.setState({data, loading: false});
 
-        this.scrollToReview(search.slice(start?start+1:0,end||null));
+        this.scrollToReview(search.slice(1,endPos === -1?undefined:endPos));
     }
 
     componentWillUnmount() {
@@ -134,7 +132,7 @@ class UniversityDetailPage extends React.Component {
                 <div className="review-number">
                     <p>{`${numberOfReviews} review${numberOfReviews > 1 ? 's' : ''}`}</p>
                 </div>
-                {reviews && reviews.map((review) => <ReviewComponent key={review.id} id={review.id} universityId={id} review={review}/>)}
+                {reviews && reviews.map((review) => <ReviewComponent universityName={name} key={review.id} id={review.id} universityId={id} review={review}/>)}
                 {show && <PostDialog universityId={id} onClose={this.onClose} dialogType="Review"/>}
 
                 <BackToTopButton scrollStepInPx="50" delayInMs="16.66"/>
