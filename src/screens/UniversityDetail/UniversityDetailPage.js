@@ -32,9 +32,9 @@ class UniversityDetailPage extends React.Component {
     window.addEventListener('scroll', UniversityDetailPage.handleScroll);
     const endPos = search.indexOf('&fbclid=');
     const data = await appModel.getUniversities(params.universityId);
-    if(data) {
-        const reviews = data.reviews.reverse();
-        data.reviews = reviews;
+    if (data) {
+      const reviews = data.reviews.reverse();
+      data.reviews = reviews;
     }
     this.setState({ data, loading: false });
 
@@ -90,8 +90,8 @@ class UniversityDetailPage extends React.Component {
           bgColor="#f1f1f1"
           spinnerColor="#9ee5f8"
           textColor="#676767"
-          logoSrc={require('./../../assets/icons/logo.svg')}
-          text="đang tải dữ liệu"
+          logoSrc={require('./../../assets/icons/loading.png')}
+          text="Đang tải dữ liệu"
         />
         <div className="row d-flex justify-content-center w-100 m-0 header-view">
           <div className="col-6 university-information">
