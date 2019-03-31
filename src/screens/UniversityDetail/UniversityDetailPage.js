@@ -25,12 +25,22 @@ class UniversityDetailPage extends React.Component {
   }
 
   async componentDidMount() {
-    const {match: {params}} = this.props;
+    const {
+      match: { params },
+      location: { search }
+    } = this.props;
     window.addEventListener('scroll', UniversityDetailPage.handleScroll);
-    let data = await appModel.getUniversities(params.universityId);
+    const endPos = search.indexOf('&fbclid=');
+    const data = await appModel.getUniversities(params.universityId);
     const reviews = data.reviews.reverse();
     data.reviews = reviews;
     this.setState({ data, loading: false });
+
+    this.scrollToReview(search.slice(1, endPos === -1 ? undefined : endPos));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', UniversityDetailPage.handleScroll);
   }
 
   onClose = () => {
@@ -51,9 +61,12 @@ class UniversityDetailPage extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', UniversityDetailPage.handleScroll);
-  }
+  scrollToReview = (id) => {
+    const ReviewElement = document.getElementById(id);
+    if (ReviewElement) {
+      ReviewElement.scrollIntoView();
+    }
+  };
 
   render() {
     const {
@@ -108,7 +121,7 @@ class UniversityDetailPage extends React.Component {
                     className="university-information-details-button-review"
                     onClick={this.onShow}
                   >
-                    Review
+                    Nhận xét
                   </button>
                 </div>
               </div>
@@ -117,9 +130,12 @@ class UniversityDetailPage extends React.Component {
         </div>
         <div className="line" />
         <div className="review-number">
-          <p>{`${numberOfReviews} review${numberOfReviews > 1 ? 's' : ''}`}</p>
+          <p>{`${numberOfReviews} Nhận xét`}</p>
         </div>
-        {reviews && reviews.map((review) => <ReviewComponent review={review} />)}
+        {reviews &&
+          reviews.map((review) => (
+            <ReviewComponent universityName={name} key={review.id} id={review.id} universityId={id} review={review} />
+          ))}
         {show && <PostDialog universityId={id} onClose={this.onClose} dialogType="Review" />}
 
         <BackToTopButton scrollStepInPx="50" delayInMs="16.66" />

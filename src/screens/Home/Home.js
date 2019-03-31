@@ -6,7 +6,8 @@ import apiModel from "../../api/APIModel";
 import moment from "moment";
 import LoadingScreen from "react-loading-screen";
 
-const Title = "Review trường đại học";
+const Title = 'Review trường đại học';
+const subTitle = 'Hóng phốt, drama của hơn 100 trường đại học tại Việt Nam';
 let universities = [];
 
 class Home extends React.Component {
@@ -27,8 +28,7 @@ class Home extends React.Component {
     universities = data.map((uni) => {
       return { name: uni.name, id: uni.id };
     });
-    let recentReviews = await apiModel.getRecentReviews();
-    recentReviews = recentReviews.reverse();
+    const recentReviews = await apiModel.getRecentReviews();
     // console.log("aaa", recentReviews);
     this.setState({ data, recentReviews, loading: false });
   }
