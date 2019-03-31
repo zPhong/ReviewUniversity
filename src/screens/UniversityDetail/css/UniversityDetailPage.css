@@ -26,6 +26,12 @@
   border: 1px solid #fcfcfc;
 }
 
+.university-information-details-button-container{
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+}
+
 .university-information-details {
   display: block;
   width: 100%;
@@ -63,19 +69,16 @@
 }
 
 .university-information-details-button-review {
-  background-color: transparent;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  color: #fcfcfc;
-  border: 1px solid #fcfcfc;
-  border-radius: 5px;
-  min-width: 8rem;
-  max-width: 8rem;
-  max-height: 2.5rem;
-  min-height: 2.5rem;
-  font-size: 1rem;
-  font-weight: 400;
+    background-color: transparent;
+    color: #FCFCFC;
+    border: 1px solid #FCFCFC;
+    border-radius: 5px;
+    min-width: 8rem;
+    max-width: 8rem;
+    max-height: 2.5rem;
+    min-height: 2.5rem;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 .university-information-details-button-review:hover {
@@ -97,6 +100,10 @@
   padding: 0.5rem 3rem 0.5rem;
 }
 
+
+
+
+
 /* ===========================================================================
 /*                              RESPONSIVE
 /* ===========================================================================
@@ -107,9 +114,16 @@
     margin-top: 0.5rem;
   }
 
-  .university-information {
-    display: block;
-  }
+    .university-information {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .university-information-details-button-container{
+        height:60px;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

@@ -48,7 +48,7 @@ class ReviewComponent extends React.Component {
       review: { id }
     } = this.props;
     const data = await APIModel.getReply(id);
-    this.setState({ replies: data.replies, loading: false });
+    this.setState({ replies: data?data.replies:[], loading: false });
   };
 
   onClickViewReplies = () => {
