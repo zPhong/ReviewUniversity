@@ -108,14 +108,13 @@ class ReviewComponent extends React.Component {
         </p>
         <div className="review-content p-2">{context || ''}</div>
         <div className="row p-0 m-0 mt-2 mb-1 w-100">
-          <button type="button" className="reply-button btn-info" onClick={this.onShow}>
+          <button type="button" className="show-reply-button" onClick={this.onShow}>
             Trả lời
           </button>
           <button type="button" className="show-reply-button" onClick={this.onClickViewReplies}>
-            <u>{`(${numberOfReplies} bình luận)`}</u>
+            {`${numberOfReplies} bình luận`}
           </button>
           <div className="ShareContainer">
-            <p>Share </p>
             <FacebookShareButton
               url={`${document.URL}?${id}`}
               quote={`${universityName}:\n\t"${context}"`}

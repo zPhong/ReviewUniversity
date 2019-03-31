@@ -1,9 +1,8 @@
 .reply-container {
-  border: 1px solid #4b4b4b;
   margin-left: 2rem !important;
   padding-left: 15px;
   padding-right: 15px;
-  background: #ffffff;
+  background: #f2f3f5;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   border-radius: 4px;
@@ -14,38 +13,36 @@ p {
 }
 
 .reply-identification {
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
   margin-top: 0.5rem;
-  margin-bottom: 0.3rem;
-  color: #8c8c8c;
+  color: #90949c;
 }
 
 .reply-index {
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
   margin-top: 0.5rem;
-  margin-bottom: 0.3rem;
-  color: #8c8c8c;
+  color: #90949c;
   margin-left: auto;
 }
 
 .reply-creation-time {
-  margin-top: 0.5rem;
   margin-left: auto;
-  font-weight: 300;
+  font-weight: 400;
+  color: #90949c;
 }
 
 .reply-content {
-  border: 1px solid #979797;
-  background: #fcfcfc;
   margin-bottom: 0.5rem;
   border-radius: 3px;
+  color: black;
+  font-size: 18px;
+  margin: 0 0.6rem;
 }
 
 .reply-type {
   color: green;
-  margin-top: 0.3rem;
   margin-bottom: 0.5rem;
 }
 
@@ -54,5 +51,5 @@ p {
 }
 
 .type-other {
-  color: #282c34;
+  color: #90949c;
 }
