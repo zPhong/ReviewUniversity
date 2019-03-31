@@ -26,6 +26,12 @@
     border: 1px solid #FCFCFC;
 }
 
+.university-information-details-button-container{
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+}
+
 .university-information-details {
     display: block;
     width: 100%;
@@ -64,9 +70,6 @@
 
 .university-information-details-button-review {
     background-color: transparent;
-    position:absolute;
-    bottom:0;
-    right:0;
     color: #FCFCFC;
     border: 1px solid #FCFCFC;
     border-radius: 5px;
@@ -101,6 +104,7 @@
 
 
 
+
 /* ===========================================================================
 /*                              RESPONSIVE
 /* ===========================================================================
@@ -112,7 +116,14 @@
     }
 
     .university-information {
-        display: block;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .university-information-details-button-container{
+        height:60px;
+        justify-content: center;
+        align-items: center;
     }
 }
 
