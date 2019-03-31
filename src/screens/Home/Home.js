@@ -70,7 +70,7 @@ class Home extends React.Component {
         <h1>Nhận xét gần đây</h1>
         {data.map((item, index) => (
           <p key={index} className="d-flex flex-column pb-3 recentContainer">
-            <a href={`/university/${item.universityId}`}>{item.context}</a>
+            <a href={`/university/${item.universityId}?${item.id}`}>{item.context}</a>
             <p className="max-text">{this.formatDate(item.createAt)}</p>
           </p>
         ))}
