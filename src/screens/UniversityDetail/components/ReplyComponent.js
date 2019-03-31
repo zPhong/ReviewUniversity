@@ -27,11 +27,11 @@ class ReplyComponent extends React.Component {
   render() {
     const {
       index,
-      reply: { role, type, context, createAt }
+      reply: { id, role, type, context, createAt }
     } = this.props;
 
     return (
-      <div className="reply-container">
+      <div id={`RV${id}`} className="reply-container">
         <div className="row m-0">
           <p className="reply-identification">{Role[role]}</p>
           <a className="reply-index" href="#">

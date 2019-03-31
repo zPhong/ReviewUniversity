@@ -7,27 +7,7 @@ import ReactDOM from 'react-dom';
 import Recaptcha from 'react-recaptcha';
 import './css/PostDialog.css';
 import APIModel from '../../../../api/APIModel';
-
-const captchaKeyApi = '6LeR_JkUAAAAAGErmsKDv410V24gf5bHBHfeyfug';
-
-const Roles = {
-  student: 'Học sinh',
-  employee: 'Cán bộ trường',
-  others: 'Người ngoài'
-};
-
-const Types = {
-  Review: {
-    like: 'Khen',
-    dislike: 'Chê',
-    others: 'Góp ý'
-  },
-  Reply: {
-    like: 'Tán thành',
-    dislike: 'Phản bác',
-    others: 'Trung lập'
-  }
-};
+import { Roles, Types, captchaKeyApi, Status } from '../../../../consts';
 
 const dialogDisplayType = {
   Review: 'Nhận Xét',
@@ -41,14 +21,16 @@ class ReviewPostDialog extends React.Component {
       role: 'others',
       type: 'others',
       content: '',
+      postResult: { id: null, status: null },
       captchaChecked: false
     };
   }
 
   componentDidMount() {
     const { onClose } = this.props;
+    const { responseStatus } = this.state;
     $(ReactDOM.findDOMNode(this)).modal('show');
-    $(ReactDOM.findDOMNode(this)).on('hidden.bs.modal', onClose);
+    $(ReactDOM.findDOMNode(this)).on('hidden.bs.modal', onClose(responseStatus));
   }
 
   callback = () => {
@@ -73,23 +55,20 @@ class ReviewPostDialog extends React.Component {
     }
 
     let result;
-    if (dialogType === 'Review')
-    {
-      result =  await APIModel.postReview(data);
-    }
-    else result = await APIModel.postReply(data);
-
-    if(result !== true)
-    {
-       alert(result);
+    if (dialogType === 'Review') {
+      result = await APIModel.postReview(data);
+    } else {
+      result = await APIModel.postReply(data);
+      if (result && result.id) {
+        this.setState({ responseStatus: { status: Status.POST_REPLY_SUCCEED, data: result } });
+      }
     }
     document.getElementById('btnClose').click();
-
   };
 
   renderContent = () => {
     const { dialogType } = this.props;
-    const { role, type } = this.state;
+    const { role, type, content } = this.state;
     return (
       <form>
         <div className="form-group">
@@ -131,7 +110,14 @@ class ReviewPostDialog extends React.Component {
           </div>
         </div>
         <div className="form-group">
-          <p>Nội dung (*)</p>
+          <div className="d-flex flex-wrap align-content-end justify-content-between">
+            <p>Nội dung (*)</p>
+            <div className="d-flex align-items-center">
+              {content.length < 15 && (
+                <span className="text-warning">Gõ thiếu {15 - content.length} kí tự rồi kìa ^^</span>
+              )}
+            </div>
+          </div>
           <textarea
             type="text"
             className="w-100"
