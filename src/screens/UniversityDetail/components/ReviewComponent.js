@@ -102,6 +102,7 @@ class ReviewComponent extends React.Component {
                         <p>Share </p>
                     <FacebookShareButton
                         url={`${document.URL}'?'${id}`}
+                        quote={context}
                         className="Demo__some-network__share-button">
                         <FacebookIcon
                             size={32}
