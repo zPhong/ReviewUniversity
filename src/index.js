@@ -41,8 +41,8 @@ const routing = (
     {renderHeader()}
     <div>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/university/:universityId?" render={(props) => <UniversityDetailPage {...props} />} />
+        <Route exact path="/ReviewUniversity/" component={Home} />
+        <Route exact path="ReviewUniversity/university/:universityId?" render={(props) => <UniversityDetailPage {...props} />} />
         <Route component={NotFound} />
       </Switch>
     </div>
