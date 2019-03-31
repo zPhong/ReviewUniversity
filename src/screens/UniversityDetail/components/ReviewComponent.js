@@ -2,9 +2,13 @@ import * as React from 'react';
 import moment from 'moment';
 import { FacebookShareButton, FacebookIcon } from 'react-share';
 import './css/ReviewComponent.css';
+import { css } from '@emotion/core';
+import { ClipLoader } from 'react-spinners';
 import ReplyComponent from './ReplyComponent';
 import APIModel from '../../../api/APIModel';
 import PostDialog from './Dialog/PostDialog';
+// First way to import
+// Another way to import
 
 const Role = {
   others: 'Người ngoài',
@@ -12,10 +16,19 @@ const Role = {
   student: 'Sinh viên trường'
 };
 
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+  margin-left: 50%;
+  margin-top: 10px;
+`;
+
 class ReviewComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       show: false,
       displayReplies: false,
       replies: []
@@ -35,13 +48,18 @@ class ReviewComponent extends React.Component {
       review: { id }
     } = this.props;
     const data = await APIModel.getReply(id);
-    this.setState({ replies: data.replies });
+    this.setState({ replies: data.replies, loading: false });
   };
 
   onClickViewReplies = () => {
     const { displayReplies } = this.state;
-    this.setState({ displayReplies: !displayReplies });
-    this.loadReply();
+    if (displayReplies === false) {
+      this.setState({ displayReplies: !displayReplies, loading: true }, () => {
+        this.loadReply();
+      });
+    } else {
+      this.setState({ displayReplies: !displayReplies, loading: false }, () => {});
+    }
   };
 
   formatType = (type) => {
@@ -73,7 +91,7 @@ class ReviewComponent extends React.Component {
       review: { id, type, role, context, numberOfReplies, createAt }
     } = this.props;
 
-    const { displayReplies, replies, show } = this.state;
+    const { displayReplies, replies, show, loading } = this.state;
 
     return (
       <div id={id} className="review-container">
@@ -108,7 +126,13 @@ class ReviewComponent extends React.Component {
           </div>
         </div>
         <div className={displayReplies ? 'row m-0 d-block reply-block show-replies' : 'row m-0 d-block reply-block'}>
-          {this.renderReplies(replies)}
+          {loading ? (
+            <div className="sweet-loading Loading">
+              <ClipLoader css={override} sizeUnit="px" size={30} color="#123abc" loading />
+            </div>
+          ) : (
+            this.renderReplies(replies)
+          )}
         </div>
         {show && <PostDialog context={context} reviewId={id} onClose={this.onClose} dialogType="Reply" />}
       </div>
