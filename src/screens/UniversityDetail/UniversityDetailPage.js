@@ -132,7 +132,7 @@ class UniversityDetailPage extends React.Component {
                 <div className="review-number">
                     <p>{`${numberOfReviews} review${numberOfReviews > 1 ? 's' : ''}`}</p>
                 </div>
-                {reviews && reviews.map((review) => <ReviewComponent key={review.id} id={review.id} universityId={id} review={review}/>)}
+                {reviews && reviews.map((review) => <ReviewComponent universityName={name} key={review.id} id={review.id} universityId={id} review={review}/>)}
                 {show && <PostDialog universityId={id} onClose={this.onClose} dialogType="Review"/>}
 
                 <BackToTopButton scrollStepInPx="50" delayInMs="16.66"/>

@@ -72,6 +72,7 @@ class ReviewComponent extends React.Component {
 
     render() {
         const {
+            universityName,
             review: {id, type, role, context, numberOfReplies, createAt}
         } = this.props;
 
@@ -102,7 +103,7 @@ class ReviewComponent extends React.Component {
                         <p>Share </p>
                     <FacebookShareButton
                         url={`${document.URL}?${id}`}
-                        quote={`"${context}"`}
+                        quote={`${universityName}:\n\t"${context}"`}
                         className="Demo__some-network__share-button">
                         <FacebookIcon
                             size={32}
