@@ -45,8 +45,8 @@ class Home extends React.Component {
           bgColor="#f1f1f1"
           spinnerColor="#9ee5f8"
           textColor="#676767"
-          logoSrc={require('./../../assets/icons/logo.svg')}
-          text="đang tải dữ liệu"
+          logoSrc={require('./../../assets/icons/loading.png')}
+          text="Đang tải dữ liệu"
         />
         <h2 className="font-weight-bold text-light py-4">{Title}</h2>
         <h5 className="font-weight-bold text-light py-4">{subTitle}</h5>

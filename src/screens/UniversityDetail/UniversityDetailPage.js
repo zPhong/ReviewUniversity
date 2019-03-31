@@ -98,7 +98,7 @@ class UniversityDetailPage extends React.Component {
             bgColor="#f1f1f1"
             spinnerColor="#9ee5f8"
             textColor="#676767"
-            logoSrc={require("./../../assets/icons/logo.svg")}
+            logoSrc={require("./../../assets/icons/loading.png")}
             text="đang tải dữ liệu"
          />
          <div className="row d-flex justify-content-center w-100 m-0 header-view">

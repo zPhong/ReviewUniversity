@@ -13,9 +13,6 @@ function renderHeader() {
   return (
     <div className="px-3 bg-dark pb-1">
       <nav className="navbar navbar-expand-lg navbar-dark bg-transparent px-0">
-        <NavLink exact activeClassName="active" className="navbar-brand" to="/">
-          <img src={logo} className="rounded mx-auto d-block Logo" alt="logo" />
-        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -28,7 +25,7 @@ function renderHeader() {
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav ml-auto">
+          <div className="navbar-nav mr-auto">
             <NavLink exact activeClassName="active" className="nav-item nav-link active" to="/">
               Trang chủ <span className="sr-only">(current)</span>
             </NavLink>
