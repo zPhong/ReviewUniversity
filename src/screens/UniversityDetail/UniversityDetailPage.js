@@ -130,7 +130,7 @@ class UniversityDetailPage extends React.Component {
         </div>
         <div className="line" />
         <div className="review-number">
-          <p>{`${numberOfReviews} review${numberOfReviews > 1 ? 's' : ''}`}</p>
+          <p>{`${numberOfReviews} Nhận xét`}</p>
         </div>
         {reviews &&
           reviews.map((review) => (
