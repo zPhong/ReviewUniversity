@@ -12,7 +12,7 @@ class Autocomplete extends React.Component {
     };
   }
 
-  onChange = e => {
+  onChange = (e) => {
     const { suggestions } = this.props;
     const {
       currentTarget: { value }
@@ -20,8 +20,7 @@ class Autocomplete extends React.Component {
     const newValue = value;
 
     const filteredSuggestions = suggestions.filter(
-      suggestion =>
-        suggestion.toLowerCase().indexOf(newValue.toLowerCase()) > -1
+      (suggestion) => suggestion.name.toLowerCase().indexOf(newValue.toLowerCase()) > -1
     );
 
     this.setState({
@@ -32,19 +31,21 @@ class Autocomplete extends React.Component {
     });
   };
 
-  onKeyDown = e => {
+  onKeyDown = (e) => {
     const { activeSuggestion, filteredSuggestions } = this.state;
-
+    const universities = filteredSuggestions.map((u) => u.name);
     if (e.keyCode === 13) {
       this.setState({
         showSuggestions: false,
-        value: filteredSuggestions[activeSuggestion]
+        value: universities[activeSuggestion]
       });
     }
   };
 
   onBlur = () => {
-    this.setState({ showSuggestions: false });
+    setTimeout(() => {
+      this.setState({ showSuggestions: false });
+    }, 250);
   };
 
   renderSuggestionList = () => {
@@ -53,9 +54,13 @@ class Autocomplete extends React.Component {
     if (showSuggestions && value) {
       if (filteredSuggestions.length) {
         return (
-          <ul className="suggestions">
-            {filteredSuggestions.map(suggestion => {
-              return <li key={suggestion}>{suggestion}</li>;
+          <ul id="menu" className="suggestions">
+            {filteredSuggestions.map((suggestion) => {
+              return (
+                <li key={suggestion.id}>
+                  <a href={`/university/${suggestion.id}`}>{suggestion.name}</a>
+                </li>
+              );
             })}
           </ul>
         );
