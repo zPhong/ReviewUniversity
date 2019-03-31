@@ -60,7 +60,10 @@ class UniversityDetailPage extends React.Component {
 
     scrollToReview = (id) => {
         const ReviewElement = document.getElementById(id);
-        if (ReviewElement) ReviewElement.scrollIntoView();
+        if (ReviewElement)
+        {
+            ReviewElement.scrollIntoView();
+        }
     }
 
 
@@ -128,7 +131,7 @@ class UniversityDetailPage extends React.Component {
                 <div className="review-number">
                     <p>{`${numberOfReviews} review${numberOfReviews > 1 ? 's' : ''}`}</p>
                 </div>
-                {reviews && reviews.map((review) => <ReviewComponent id={review.id} review={review}/>)}
+                {reviews && reviews.map((review) => <ReviewComponent key={review.id} id={review.id} review={review}/>)}
                 {show && <PostDialog universityId={id} onClose={this.onClose} dialogType="Review"/>}
 
                 <BackToTopButton scrollStepInPx="50" delayInMs="16.66"/>

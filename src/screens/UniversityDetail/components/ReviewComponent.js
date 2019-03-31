@@ -78,7 +78,7 @@ class ReviewComponent extends React.Component {
         const {displayReplies, replies, show} = this.state;
 
         return (
-            <div className="review-container">
+            <div id={id} className="review-container">
                 <div className="row m-0">
                     <p className="review-identification">{Role[role] || ''}</p>
                     <p className="review-creation-time">{this.formatDate(createAt)}</p>
@@ -102,6 +102,7 @@ class ReviewComponent extends React.Component {
                         <p>Share </p>
                     <FacebookShareButton
                         url={`${document.URL}'?'${id}`}
+                        quote={context}
                         className="Demo__some-network__share-button">
                         <FacebookIcon
                             size={32}
