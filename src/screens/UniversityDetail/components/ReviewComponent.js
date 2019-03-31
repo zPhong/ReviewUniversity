@@ -78,7 +78,7 @@ class ReviewComponent extends React.Component {
         const {displayReplies, replies, show} = this.state;
 
         return (
-            <div className="review-container">
+            <div id={id} className="review-container">
                 <div className="row m-0">
                     <p className="review-identification">{Role[role] || ''}</p>
                     <p className="review-creation-time">{this.formatDate(createAt)}</p>
