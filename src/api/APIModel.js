@@ -48,6 +48,10 @@ class APIModel {
       body: JSON.stringify(reviewData)
     }).then(response => {
       return response.json();
+    }).then(response=>{
+      if(response.id)
+        return true;
+      return response.Context.toString().replace(',','\n');
     });
   };
 
@@ -62,6 +66,10 @@ class APIModel {
       body: JSON.stringify(replyData)
     }).then(response => {
       return response.json();
+    }).then(response=>{
+        if(response.id)
+            return true;
+        return response.Context.toString().replace(',','\n');
     });
   };
 
@@ -76,6 +84,10 @@ class APIModel {
       body: JSON.stringify(universityData)
     }).then(response => {
       return response.json();
+    }).then(response=>{
+        if(response.id)
+            return true;
+        return response.Context.toString().replace(',','\n');
     });
   };
 }
